@@ -217,5 +217,9 @@ ul{
 }
 .popup-wrapper{
     display: none;
+	z-index: 5;
+}
+.popup{
+	z-index: 10000;
 }
 

@@ -9,6 +9,12 @@ R.init = function(){
             $(".popup-wrapper").css("display","block");
         });
 
+        // $(".popup-wrapper").click(function(){
+        //     if ($(".popup-wrapper").css("display","block")){
+        //        $(".popup-wrapper").css("display","none")
+        //     }
+        // });
+
         R.sortBlockList();
         R.initRepository();
         R.calculateActivityTime();
