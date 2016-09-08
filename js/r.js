@@ -15,17 +15,16 @@ R.init = function(){
         });
 
         //Make the activities sortable between them. Being able to drag them
-        $( ".repository #slots-container" ).sortable({
+        $(".repository #slots-container").sortable({
             revert: true,
             "axis":"y",
             containment: "parent"
         });
 
 
-        $( ".block-list .container" ).sortable({
+        $(".block-list .container").sortable({
             revert: true,
             stop:function(event, ui){
-                //Firing function line 64
                 //todo add logic udpate linked list
                 R.scheduleActivity(ui.item);
             },
@@ -33,7 +32,22 @@ R.init = function(){
             containment: "parent"
         });
 
+
+        //make the activities in the repository draggable
+          $(".left-panel li").draggable({
+              revert:true
+              
+          });
+            console.log("drag me!");
+
+       
+        
+        
+        
+
         $( "ul, li" ).disableSelection();
+
+        
 
 
         $("#activityForm").bind("submit",function () {

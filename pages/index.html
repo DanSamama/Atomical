@@ -48,7 +48,7 @@
 					<section class="block-list">
 						<ul id="slots-container" class="container">
 							{% for activity in chrono_list %}
-							<li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}" data-activity-title="{{activity.title}}" data-next="{{activity.next}}" class="draggable shadowed {{activity.type|lower}} slot">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}</li>
+							<li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}" data-activity-title="{{activity.title}}" data-next="{{activity.next}}" class="draggable shadowed {{activity.type|lower}} slot block ui-widget-content">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}</li>
 							{% endfor %}
 						</ul>
 					</section>
