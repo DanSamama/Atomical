@@ -39,13 +39,13 @@ R.init = function(){
         $("#activityForm").bind("submit",function () {
             $.post("/activity",$(this).serialize(),function(result){
                $(".popup-wrapper").css("display","none");
+                $(".popup").css("display","none");
                 var createdActivity = $(result);
                 $( ".repository #slots-container" ).prepend(createdActivity)
             });
 
             return false;
         });
-
     });
 };
 
@@ -100,9 +100,6 @@ R.generateWeek = function(weekNum){
         relevantDay.find(".content").append(activityRepresentation);
     });
 };
-
-
-
 
 
 
