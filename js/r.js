@@ -3,6 +3,12 @@ var R = {};
 
 R.init = function(){
     $(document).ready(function(){
+
+
+        $(".clickable.slot.wide-btn").click(function(){
+            $(".popup-wrapper").css("display","block");
+        });
+
         R.sortBlockList();
         R.initRepository();
         R.calculateActivityTime();
