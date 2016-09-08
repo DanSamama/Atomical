@@ -32,7 +32,6 @@ class MainHandler(webapp2.RequestHandler):
         context = {}
         context["version"] = getAppVersion()
         context["repository"] = db.getRepositoryActivities("bootcamp", "winter 2015")
-        context["calendar"] = db.getCalendarSetup("bootcamp", "winter 2015")
         context["chrono_list"] = db.getchronoListActivities("bootcamp", "winter 2015")
         self.response.write(template.render(context))
 
