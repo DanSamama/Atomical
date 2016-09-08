@@ -21,25 +21,46 @@ R.init = function(){
         });
 
         //Make the activities sortable between them. Being able to drag them
-        $( ".repository #slots-container" ).sortable({
-            revert: true,
-            "axis":"y",
-            containment: "parent"
-        });
+        // $(".repository #slots-container").sortable({
+        //     revert: true,
+        //     stop:function(event, ui){
+        //         //todo add logic udpate linked list
+        //         R.scheduleActivity(ui.item);
+        //     },
+        //     "axis":"y",
+        //     containment: "parent"
+        // });
+
+        //make the chronoList activities sortable
+        // $(".block-list .container").sortable({
+        //     revert: true,
+        //     stop:function(event, ui){
+        //         //todo add logic udpate linked list
+        //         R.scheduleActivity(ui.item);
+        //     },
+        //     "axis":"y",
+        //     containment: "parent"
+        // });
+        //
 
 
-        $( ".block-list .container" ).sortable({
-            revert: true,
-            stop:function(event, ui){
-                //Firing function line 64
-                //todo add logic udpate linked list
-                R.scheduleActivity(ui.item);
-            },
-            "axis":"y",
-            containment: "parent"
-        });
+            $(".block-list .container").sortable({
+                connectWith: ".connectedSortable",
+                stop:function(event, ui){
+                 //todo add logic udpate linked list
+                 R.scheduleActivity(ui.item);
+             }
+            }).disableSelection();
 
-        $( "ul, li" ).disableSelection();
+
+            $(".repository #slots-container").sortable({
+                connectWith: ".connectedSortable"
+            }).disableSelection();
+
+
+
+        //$( "ul, li" ).disableSelection();
+
 
 
         $("#activityForm").bind("submit",function () {
@@ -142,8 +163,8 @@ R.sortBlockList = function(){
                 console.log(nextBlock);
                 nextBlock.before(unsortedBlockAndPrevSorted);
             }else{
-                    console.log("putting last");
-                  $(".block-list .container").append(unsortedBlockAndPrevSorted)
+                console.log("putting last");
+                $(".block-list .container").append(unsortedBlockAndPrevSorted)
             }
             unsortedBlock.addClass("sorted");
             console.log(counter +".after");
@@ -176,11 +197,11 @@ R.scheduleActivity = function(activity){
 
     if (nextActivity.length == 0){
         currentNextId = "None";
-         activity.attr("data-next", "None");
+        activity.attr("data-next", "None");
         console.log("i am now last");
     }else{
-         currentNextId = nextActivity.attr("id");
-         console.log("i am not last now");
+        currentNextId = nextActivity.attr("id");
+        console.log("i am not last now");
         activity.attr("data-next", currentNextId)
     }
 

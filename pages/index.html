@@ -32,7 +32,7 @@
 	<div class="panel-container">
 		<div class="left-panel">
 			<section class="repository">
-				<ul id="slots-container" class="container">
+				<ul id="slots-container" class="container connectedSortable">
 					{% for activity in repository %}
 						{% include "/templates/repository_activity.html" %}
 					{% endfor %}
@@ -46,12 +46,12 @@
 			<div class="inner-panel-container">
 				<div class="top-panel">
 					<section class="block-list">
-						<ul id="slots-container" class="container">
+						<ul id="slots-container" class="container connectedSortable">
 							{% for activity in chrono_list %}
 							<li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}"
 								data-type={{activity.type|lower}} data-activity-title="{{activity.title}}"
 								data-next="{{activity.next}}"
-								class="draggable shadowed {{activity.type|lower}} slot">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}</li>
+								class="draggable shadowed {{activity.type|lower}} slot block ui-widget-content">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}</li>
 							{% endfor %}
 						</ul>
 					</section>
