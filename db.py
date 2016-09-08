@@ -15,6 +15,3 @@ def getActivityById(activityId):
     return ndb.gql("SELECT * FROM Activity WHERE id = :1", activityId).get()
 
 
-def getCalendarSetup(programId, cohortId):
-    return ndb.gql("SELECT * FROM Calendar WHERE program = :1 and cohort = :2 and status = 'IN_CHRONOLIST'", programId,
-                   cohortId).fetch(1000)

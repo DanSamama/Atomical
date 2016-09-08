@@ -160,38 +160,8 @@ class ScheduleActivity(webapp2.RequestHandler):
                 currentPrev.put()
 
 
-        # #todo add extra prop
-        # activity = db.getActivityById(activityId)
-        # if activity:
-        #     currentNext = activity.next
-        #     activity.status = "IN_CHRONOLIST"
-        #     prevActivity = db.getActivityById(prevActivityId)
-        #     if prevActivity:
-        #         prevActivity.next = activity.next
-        #
-        #
-        #     if nextActivityId:
-        #         activity.next = nextActivityId
-        #         nexActivity = db.getActivityById(nextActivityId)
-        #         if prevActivity:
-        #             prevActivity.next = activityId
-        #         #nexActivity.next = currentNext
-        #         #nexActivity.put()
-        #     else:
-        #         activity.next = None
-        #     activity.put()
 
-        # if prevActivity:
-        #     prevActivity.next = activityId
-        #     prevActivity.put()
 
-class MarkAsLast(webapp2.RequestHandler):
-    def get(self):
-        activityId = self.request.get("activity_id")
-        activity = db.getActivityById(activityId)
-        if activity:
-            activity.next = None
-            activity.put()
 
 
 
@@ -201,8 +171,6 @@ app = webapp2.WSGIApplication([
     ('/activity', ActivityForm),
     ('/calendarForm',CalendarForm),
     ('/schedule_activity', ScheduleActivity),
-    ('/mark_as_last', MarkAsLast),
-
     ('/create_db', CreateDb)
 
 ], debug=True)
