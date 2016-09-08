@@ -4,7 +4,6 @@ var R = {};
 R.init = function(){
     $(document).ready(function(){
 
-
         $(".clickable.slot.wide-btn").click(function(){
             $(".popup-wrapper").css("display","block");
         });
@@ -21,44 +20,51 @@ R.init = function(){
         });
 
         //Make the activities sortable between them. Being able to drag them
-        $(".repository #slots-container").sortable({
-            revert: true,
-            "axis":"y",
-            containment: "parent"
-        });
+        // $(".repository #slots-container").sortable({
+        //     revert: true,
+        //     stop:function(event, ui){
+        //         //todo add logic udpate linked list
+        //         R.scheduleActivity(ui.item);
+        //     },
+        //     "axis":"y",
+        //     containment: "parent"
+        // });
+
+        //make the chronoList activities sortable
+        // $(".block-list .container").sortable({
+        //     revert: true,
+        //     stop:function(event, ui){
+        //         //todo add logic udpate linked list
+        //         R.scheduleActivity(ui.item);
+        //     },
+        //     "axis":"y",
+        //     containment: "parent"
+        // });
+        //
 
 
-        $(".block-list .container").sortable({
-            revert: true,
-            stop:function(event, ui){
-                //todo add logic udpate linked list
-                R.scheduleActivity(ui.item);
-            },
-            "axis":"y",
-            containment: "parent"
-        });
+            $(".block-list .container").sortable({
+                connectWith: ".connectedSortable",
+                stop:function(event, ui){
+                 //todo add logic udpate linked list
+                 R.scheduleActivity(ui.item);
+             }
+            }).disableSelection();
 
 
-        //make the activities in the repository draggable
-          $(".left-panel li").draggable({
-              revert:true
-              
-          });
-            console.log("drag me!");
+            $(".repository #slots-container").sortable({
+                connectWith: ".connectedSortable"
+            }).disableSelection();
 
-       
-        
-        
-        
 
-        $( "ul, li" ).disableSelection();
 
-        
+        //$( "ul, li" ).disableSelection();
+
 
 
         $("#activityForm").bind("submit",function () {
             $.post("/activity",$(this).serialize(),function(result){
-               $(".popup-wrapper").css("display","none");
+                $(".popup-wrapper").css("display","none");
                 $(".popup").css("display","none");
                 var createdActivity = $(result);
                 $( ".repository #slots-container" ).prepend(createdActivity)
@@ -111,8 +117,8 @@ R.generateWeek = function(weekNum){
     var weekActivities = $(".block-list .slot[data-week="+weekNum+"]");
     $(".week-schedule .day .content").empty();
     weekActivities.each(function(){
-       var currentActivity = $(this);
-         var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
+        var currentActivity = $(this);
+        var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
         var currentActivityDay = currentActivity.attr("data-day");
         var relevantDay = $(".week-schedule .day[data-day="+ currentActivityDay +"]");
         var activityRepresentation = $("<div />").addClass("scheduled-activity").text(currentActivity.attr("data-activity-title"));
@@ -155,8 +161,8 @@ R.sortBlockList = function(){
                 console.log(nextBlock);
                 nextBlock.before(unsortedBlockAndPrevSorted);
             }else{
-                    console.log("putting last");
-                  $(".block-list .container").append(unsortedBlockAndPrevSorted)
+                console.log("putting last");
+                $(".block-list .container").append(unsortedBlockAndPrevSorted)
             }
             unsortedBlock.addClass("sorted");
             console.log(counter +".after");
@@ -183,17 +189,17 @@ R.scheduleActivity = function(activity){
         originalPrevId = originalPrev.attr("id");
         originalNextId = originalNext.attr("id");
         console.log("i was not first");
-      
+
         originalPrev.attr("data-next", originalNextId)
     }
 
     if (nextActivity.length == 0){
         currentNextId = "None";
-         activity.attr("data-next", "None");
+        activity.attr("data-next", "None");
         console.log("i am now last");
     }else{
-         currentNextId = nextActivity.attr("id");
-         console.log("i am not last now");
+        currentNextId = nextActivity.attr("id");
+        console.log("i am not last now");
         activity.attr("data-next", currentNextId)
     }
 
