@@ -79,6 +79,7 @@ R.calculateActivityTime = function () {
 
 R.generateWeek = function(weekNum){
     var weekActivities = $(".block-list .slot[data-week="+weekNum+"]");
+    $(".week-schedule .day .content").empty();
     weekActivities.each(function(){
        var currentActivity = $(this);
          var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
@@ -191,7 +192,8 @@ R.scheduleActivity = function(activity){
     $.get("/schedule_activity",{"activity_id":activity.attr("id"),"current_next_id":currentNextId,"current_prev_id":currentPrevId,"original_next_id":originalNextId,"original_prev_id":originalPrevId},function(){
         //TODO: update client side (like we update server side)
         //         R.generateCalender(prevActivity, nextActivity, activity);
-
+        R.calculateActivityTime();
+        R.generateWeek(0);
 
     });
 
