@@ -218,8 +218,17 @@ ul{
 .popup-wrapper{
     display: none;
 	z-index: 5;
+	padding: 220px;
+
 }
 .popup{
-	z-index: 10000;
+	border-radius:5px;
+	text-align: center;
+}
+
+.closingGrass {
+	float: right;
+	padding-right: 49px;
+	font-size: 33px;
 }
 
