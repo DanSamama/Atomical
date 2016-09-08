@@ -55,26 +55,12 @@ class ActivityForm(webapp2.RequestHandler):
         newActivity.time_slots = int(self.request.get("time_slots"))
         newActivity.status = "IN_REPOSITORY"
         newActivity.put()
-        self.response.write("activity saved")
-
-
-class CalendarForm(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template('/forms/calendarForm.html')
-        context = {}
-        context["version"] = getAppVersion()
+        template = jinja_environment.get_template('/templates/repository_activity.html')
+        context ={}
+        context["activity"] = newActivity
         self.response.write(template.render(context))
 
-    def post(self):
-        newCalendar = models.Calendar()
-        newCalendar.project_starting_day = self.request.get("project_starting_day")
-        newCalendar.day_starting_hour = self.request.get("day_starting_hour")
-        newCalendar.day_ending_hour = self.request.get("day_ending_hour")
-        newCalendar.status = self.request.get("status")
-        newCalendar.cohort = self.request.get("cohort")
-        newCalendar.program = self.request.get("program")
-        newCalendar.put()
-        self.response.write("calendar saved")
+
 
 
 class CreateDb(webapp2.RequestHandler):
@@ -168,7 +154,6 @@ class ScheduleActivity(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/activity', ActivityForm),
-    ('/calendarForm',CalendarForm),
     ('/schedule_activity', ScheduleActivity),
     ('/create_db', CreateDb)
 

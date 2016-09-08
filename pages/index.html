@@ -1,97 +1,114 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>ReSchedule</title>
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<meta name=viewport content="width=device-width, initial-scale=1">
-		<meta property="og:image" content="" />
-		<meta property="og:title" content="ReSchedule" />
-		<meta property="og:url" content="" />
-		<meta property="og:description" content="" />
+<head>
+	<title>ReSchedule</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta property="og:image" content="" />
+	<meta property="og:title" content="ReSchedule" />
+	<meta property="og:url" content="" />
+	<meta property="og:description" content="" />
 
-		<!-- CSS (LIB) -->
-		<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui.min.css?v={{version}}">
-		<link rel="stylesheet" type="text/css" href="/js/lib/font-awesome.min.css?v={{version}}">
+	<!-- CSS (LIB) -->
+	<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui.min.css?v={{version}}">
+	<link rel="stylesheet" type="text/css" href="/js/lib/font-awesome.min.css?v={{version}}">
 
-		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="/css/r.css?v={{version}}">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/css/r.css?v={{version}}">
 
 
 
-		<!-- JS (LIB) -->
-		<script type="text/javascript" src="/js/lib/jquery-3.1.0.min.js?v={{version}}"></script>
-		<script type="text/javascript"  src="/js/lib/jquery-ui.min.js?v={{version}}"></script>
+	<!-- JS (LIB) -->
+	<script type="text/javascript" src="/js/lib/jquery-3.1.0.min.js?v={{version}}"></script>
+	<script type="text/javascript"  src="/js/lib/jquery-ui.min.js?v={{version}}"></script>
 
-		<!-- JS -->
-		<script  type="text/javascript" src="/js/r.js?v={{version}}"></script>
-	</head>
-	<body>
-		<div class="main">
-			<section class="menu"></section>
-			<div class="panel-container">
-				<div class="left-panel">
-					<section class="repository">
+	<!-- JS -->
+	<script  type="text/javascript" src="/js/r.js?v={{version}}"></script>
+</head>
+<body>
+<div class="main">
+	<section class="menu"></section>
+	<div class="panel-container">
+		<div class="left-panel">
+			<section class="repository">
+				<ul id="slots-container" class="container">
+					{% for activity in repository %}
+						{% include "/templates/repository_activity.html" %}
+					{% endfor %}
+				</ul>
+				<ul  class="container">
+					<li id="add-new" class=" clickable slot wide-btn"><i class="fa fa-plus"></i></li>
+				</ul>
+			</section>
+		</div>
+		<div class="right-panel">
+			<div class="inner-panel-container">
+				<div class="top-panel">
+					<section class="block-list">
 						<ul id="slots-container" class="container">
-							{% for activity in repository %}
-							<li id="{{activity.id}}" class="draggable shadowed {{activity.type|lower}} slot">{{activity.title}}
-							<button class="add">Add</button>
-							</li>
+							{% for activity in chrono_list %}
+							<li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}" data-activity-title="{{activity.title}}" data-next="{{activity.next}}" class="draggable shadowed {{activity.type|lower}} slot">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}</li>
 							{% endfor %}
 						</ul>
-						<ul  class="container">
-							<li id="add-new" class=" clickable slot wide-btn"><i class="fa fa-plus"></i></li>
-						</ul>
 					</section>
+					<button id="generateCalendar" >Generate Calendar</button>
 				</div>
-				<div class="right-panel">
-					<div class="inner-panel-container">
-						<div class="top-panel">
-							<section class="block-list">
-								<ul id="slots-container" class="container">
-									{% for activity in chrono_list %}
-									<li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}" data-activity-title="{{activity.title}}" data-next="{{activity.next}}" class="draggable shadowed {{activity.type|lower}} slot">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}</li>
-									{% endfor %}
-								</ul>
-							</section>
-							<button id="generateCalendar" >Generate Calendar</button>
+				<div class="bottom-panel">
+					<section class="week-schedule">
+						<div class="week">
+							<div class="day" data-day="0">
+								<div class="title">Sunday</div>
+								<div class="content"></div>
+							</div>
+							<div class="day" data-day="1">
+								<div class="title">Monday</div>
+								<div class="content"></div>
+							</div>
+							<div class="day" data-day="2">
+								<div class="title">Tuesday</div>
+								<div class="content"></div>
+							</div>
+							<div class="day" data-day="3">
+								<div class="title">Wednesday</div>
+								<div class="content"></div>
+							</div>
+							<div class="day" data-day="4">
+								<div class="title">Thursday</div>
+								<div class="content"></div>
+							</div>
+							<div class="day" data-day="5">
+								<div class="title">Friday</div>
+								<div class="content"></div>
+							</div>
+							<div class="day" data-day="6">
+								<div class="title">Saturday</div>
+								<div class="content"></div>
+							</div>
 						</div>
-						<div class="bottom-panel">
-							<section class="week-schedule">
-								<div class="week">
-									<div class="day" data-day="0">
-										<div class="title">Sunday</div>
-										<div class="content"></div>
-									</div>
-									<div class="day" data-day="1">
-										<div class="title">Monday</div>
-										<div class="content"></div>
-									</div>
-									<div class="day" data-day="2">
-										<div class="title">Tuesday</div>
-										<div class="content"></div>
-									</div>
-									<div class="day" data-day="3">
-										<div class="title">Wednesday</div>
-										<div class="content"></div>
-									</div>
-									<div class="day" data-day="4">
-										<div class="title">Thursday</div>
-										<div class="content"></div>
-									</div>
-									<div class="day" data-day="5">
-										<div class="title">Friday</div>
-										<div class="content"></div>
-									</div>
-									<div class="day" data-day="6">
-										<div class="title">Saturday</div>
-										<div class="content"></div>
-									</div>
-								</div>
-							</section>
-						</div>
+					</section>
 				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+	<div class="popup-wrapper">
+		<div class="popup">
+			<form id="activityForm" method="POST" action="/activity">
+				<label>Title:<input type="text" name="title"></label><br/>
+				<label>program:<input type="text" name="program"></label><br/>
+				<label>cohort:<input type="text" name="cohort"></label><br/>
+				<select name="type">
+					<option value="LECTURE">Lecture</option>
+					<option value="EXERCISE">Exercise</option>
+					<option value="ASSIGNMENT">Assignment</option>
+				</select><br/>
+				description:<textarea name="desc"></textarea><br/>
+				<label>time slots:<input type="text" name="time_slots"></label><br/>
+				<input type="submit" value="SAVE">
+			</form>
+
+		</div>
+	</div>
+</div>
+</body>
 </html>

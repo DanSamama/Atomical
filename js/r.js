@@ -15,7 +15,7 @@ R.init = function(){
         });
 
         //Make the activities sortable between them. Being able to drag them
-        $( ".repository .container" ).sortable({
+        $( ".repository #slots-container" ).sortable({
             revert: true,
             "axis":"y",
             containment: "parent"
@@ -34,6 +34,17 @@ R.init = function(){
         });
 
         $( "ul, li" ).disableSelection();
+
+
+        $("#activityForm").bind("submit",function () {
+            $.post("/activity",$(this).serialize(),function(result){
+               $(".popup-wrapper").css("display","none");
+                var createdActivity = $(result);
+                $( ".repository #slots-container" ).prepend(createdActivity)
+            });
+
+            return false;
+        });
 
     });
 };
