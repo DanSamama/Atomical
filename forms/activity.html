@@ -1,0 +1,13 @@
+<form method="POST" action="/activity">
+    <label>Title:<input type="text" name="title"></label><br/>
+    <label>program:<input type="text" name="program"></label><br/>
+    <label>cohort:<input type="text" name="cohort"></label><br/>
+    <select name="type">
+        <option value="LECTURE">Lecture</option>
+        <option value="EXERCISE">Exercise</option>
+        <option value="ASSIGNMENT">Assignment</option>
+    </select><br/>
+    description:<textarea name="desc"></textarea><br/>
+    <label>time slots:<input type="text" name="time_slots"></label><br/>
+    <input type="submit" value="SAVE">
+</form>

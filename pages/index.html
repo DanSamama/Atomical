@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ReSchedule</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<meta property="og:image" content="" />
+		<meta property="og:title" content="ReSchedule" />
+		<meta property="og:url" content="" />
+		<meta property="og:description" content="" />
+
+		<!-- CSS (LIB) -->
+		<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui.min.css?v={{version}}">
+		<link rel="stylesheet" type="text/css" href="/js/lib/font-awesome.min.css?v={{version}}">
+
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="/css/r.css?v={{version}}">
+
+
+
+		<!-- JS (LIB) -->
+		<script type="text/javascript" src="/js/lib/jquery-3.1.0.min.js?v={{version}}"></script>
+		<script type="text/javascript"  src="/js/lib/jquery-ui.min.js?v={{version}}"></script>
+
+		<!-- JS -->
+		<script  type="text/javascript" src="/js/r.js?v={{version}}"></script>
+	</head>
+	<body>
+		<div class="main">
+			<section class="menu"></section>
+			<div class="panel-container">
+				<div class="left-panel">
+					<section class="repository">
+						<ul id="slots-container" class="container">
+							{% for activity in repository %}
+							<li id="{{activity.id}}" class="draggable shadowed {{activity.type|lower}} slot">{{activity.title}}
+							<button class="add">Add</button>
+							</li>
+							{% endfor %}
+						</ul>
+						<ul  class="container">
+							<li id="add-new" class=" clickable slot wide-btn"><i class="fa fa-plus"></i></li>
+						</ul>
+					</section>
+				</div>
+				<div class="right-panel">
+					<div class="inner-panel-container">
+						<div class="top-panel">
+							<section class="block-list">
+								<ul id="slots-container" class="container">
+									{% for activity in chrono_list %}
+									<li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}" data-activity-title="{{activity.title}}" data-next="{{activity.next}}" class="draggable shadowed {{activity.type|lower}} slot">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}</li>
+									{% endfor %}
+								</ul>
+							</section>
+							<button id="generateCalendar" >Generate Calendar</button>
+						</div>
+						<div class="bottom-panel">
+							<section class="week-schedule">
+								<div class="week">
+									<div class="day" data-day="0">
+										<div class="title">Sunday</div>
+										<div class="content"></div>
+									</div>
+									<div class="day" data-day="1">
+										<div class="title">Monday</div>
+										<div class="content"></div>
+									</div>
+									<div class="day" data-day="2">
+										<div class="title">Tuesday</div>
+										<div class="content"></div>
+									</div>
+									<div class="day" data-day="3">
+										<div class="title">Wednesday</div>
+										<div class="content"></div>
+									</div>
+									<div class="day" data-day="4">
+										<div class="title">Thursday</div>
+										<div class="content"></div>
+									</div>
+									<div class="day" data-day="5">
+										<div class="title">Friday</div>
+										<div class="content"></div>
+									</div>
+									<div class="day" data-day="6">
+										<div class="title">Saturday</div>
+										<div class="content"></div>
+									</div>
+								</div>
+							</section>
+						</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
