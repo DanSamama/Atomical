@@ -153,15 +153,25 @@ ul{
 }
 
 
-.container .slot.exercise{
+.container .slot.exercise, .week-schedule .exercise{
 	background-color:#69A8B3;
+	width:100%;
+	margin:5px 0px;
+	border-radius:5px;
+
 }
 
-.container .slot.lecture{
-	background-color:#B84F13;	
+.container .slot.lecture, .week-schedule .lecture{
+	background-color:#B84F13;
+	width:100%;
+	margin:5px 0px;
+	border-radius:5px;
 }
-.container .slot.assignment{
+.container .slot.assignment, .week-schedule .assignment{
 	background-color:darkred;
+	width:100%;
+	margin:5px 0px;
+	border-radius:5px;
 }
 
 .wide-btn{

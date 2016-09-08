@@ -4,7 +4,7 @@ var R = {};
 R.init = function(){
     $(document).ready(function(){
 
-
+        //clicking ont the + button to pop-up the form
         $(".clickable.slot.wide-btn").click(function(){
             $(".popup-wrapper").css("display","block");
         });
@@ -97,11 +97,12 @@ R.generateWeek = function(weekNum){
     var weekActivities = $(".block-list .slot[data-week="+weekNum+"]");
     $(".week-schedule .day .content").empty();
     weekActivities.each(function(){
-       var currentActivity = $(this);
-         var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
+        var currentActivity = $(this);
+        console.log("container slot."+currentActivity.attr("data-type"))
+        var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
         var currentActivityDay = currentActivity.attr("data-day");
         var relevantDay = $(".week-schedule .day[data-day="+ currentActivityDay +"]");
-        var activityRepresentation = $("<div />").addClass("scheduled-activity").text(currentActivity.attr("data-activity-title"));
+        var activityRepresentation = $("<div />").addClass(currentActivity.attr("data-type")).text(currentActivity.attr("data-activity-title"));
         activityRepresentation.css("height",50 * currentActivityLength);
         relevantDay.find(".content").append(activityRepresentation);
     });
