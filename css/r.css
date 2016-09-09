@@ -217,7 +217,6 @@ ul{
 }
 .popup-wrapper{
     display: none;
-	z-index: 5;
 	padding: 220px;
 
 }
