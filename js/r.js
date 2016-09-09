@@ -7,6 +7,8 @@ R.init = function(){
         //clicking ont the + button to pop-up the form
         $(".clickable.slot.wide-btn").click(function(){
             $(".popup-wrapper").css("display","block");
+            $(".popup").css("display","block");
+
         });
 
         $(".closingGrass").click(function(){
@@ -51,14 +53,16 @@ R.init = function(){
             $(".block-list .container").sortable({
                 connectWith: ".connectedSortable",
                 stop:function(event, ui){
-                 //todo add logic udpate linked list
-                 R.scheduleActivity(ui.item);
+                  R.scheduleActivity(ui.item);
              }
             }).disableSelection();
 
 
             $(".repository #slots-container").sortable({
-                connectWith: ".connectedSortable"
+                connectWith: ".connectedSortable",
+                 stop:function(event, ui){
+                  R.scheduleActivity(ui.item);
+             }
             }).disableSelection();
 
 
@@ -117,7 +121,6 @@ R.calculateActivityTime = function () {
 };
 
 
-
 R.generateWeek = function(weekNum){
     var weekActivities = $(".block-list .slot[data-week="+weekNum+"]");
     $(".week-schedule .day .content").empty();
@@ -134,12 +137,12 @@ R.generateWeek = function(weekNum){
 };
 
 
-
-
 //after clicking "add" activity form, it takes the slot that contains this "add btn" and append the slot to the "chronolist" container in the html
 R.initRepository = function(){
+
     $(".repository .slot .add").click(function(e){
         e.stopPropagation();
+
         //This variable return the closest slot that is next to where the user is clicking
         var currentActivity = $(this).closest(".slot");
         $(".block-list .container").append(currentActivity);
