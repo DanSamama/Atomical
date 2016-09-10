@@ -36,6 +36,16 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render(context))
 
 
+class ChronoList(webapp2.RequestHandler):
+    def get(self,program,cohort):
+        template = jinja_environment.get_template('/pages/index.html')
+        context = {}
+        context["version"] = getAppVersion()
+        context["repository"] = db.getRepositoryActivities(program, cohort)
+        context["chrono_list"] = db.getchronoListActivities(program, cohort)
+        self.response.write(template.render(context))
+
+
 class ActivityForm(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('/forms/activity.html')
@@ -155,6 +165,7 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/activity', ActivityForm),
     ('/schedule_activity', ScheduleActivity),
-    ('/create_db', CreateDb)
+    ('/create_db', CreateDb),
+    routes.RedirectRoute('/repository/<program>/<cohort>', handler=ChronoList, name='chronolist', strict_slash=True),
 
 ], debug=True)
