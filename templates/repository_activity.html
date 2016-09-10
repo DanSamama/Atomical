@@ -1,3 +1,4 @@
-<li id="{{activity.id}}" class="draggable shadowed {{activity.type|lower}} slot">{{activity.title}}
+<li id="{{activity.id}}" class="draggable shadowed {{activity.type|lower}} slot " data-type={{activity.type|lower}}
+    data-activity-length="{{activity.time_slots}}">{{activity.title}}
     <button class="add">Add</button>
 </li>

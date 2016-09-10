@@ -10,9 +10,13 @@ R.init = function(){
             $(".popup").css("display","block");
 
         });
-
+        //cross to close the pop-ip form
         $(".closingGrass").click(function(){
                $(".popup-wrapper").css("display","none")
+        });
+        //Clicking on the generate calendar button, refresh the calendar
+        $("#generateCalendar").click(function(){
+
         });
 
         R.sortBlockList();
@@ -26,42 +30,27 @@ R.init = function(){
             resizeWidth: false
         });
 
-        //Make the activities sortable between them. Being able to drag them
-        // $(".repository #slots-container").sortable({
-        //     revert: true,
-        //     stop:function(event, ui){
-        //         //todo add logic udpate linked list
-        //         R.scheduleActivity(ui.item);
-        //     },
-        //     "axis":"y",
-        //     containment: "parent"
-        // });
-
-        //make the chronoList activities sortable
-        // $(".block-list .container").sortable({
-        //     revert: true,
-        //     stop:function(event, ui){
-        //         //todo add logic udpate linked list
-        //         R.scheduleActivity(ui.item);
-        //     },
-        //     "axis":"y",
-        //     containment: "parent"
-        // });
-        //
 
 
-            $(".block-list .container").sortable({
+
+
+            $(".block-list #slots-container2").sortable({
                 connectWith: ".connectedSortable",
-                stop:function(event, ui){
+                update:function(event, ui){
                   R.scheduleActivity(ui.item);
-             }
+                    console.log("CHANGEEEEE")
+             },
+                 receive:function(event, ui){
+                  console.log("RECEIVE")
+                      R.scheduleActivity(ui.item);
+              }
             }).disableSelection();
 
 
             $(".repository #slots-container").sortable({
                 connectWith: ".connectedSortable",
                  stop:function(event, ui){
-                  R.scheduleActivity(ui.item);
+                //  R.scheduleActivity(ui.item);
              }
             }).disableSelection();
 
@@ -190,6 +179,8 @@ R.scheduleActivity = function(activity){
     var nextActivity = activity.next();
     var originalPrevId, originalNextId, currentPrevId, currentNextId;
 
+    console.log("here!!!")
+
     if (originalPrev.length == 0){
         originalPrevId ="None";
         console.log("i was first");
@@ -232,9 +223,15 @@ R.scheduleActivity = function(activity){
 
 
     $.get("/schedule_activity",{"activity_id":activity.attr("id"),"current_next_id":currentNextId,"current_prev_id":currentPrevId,"original_next_id":originalNextId,"original_prev_id":originalPrevId},function(){
+        console.log("updated server calling calculate activity")
         R.calculateActivityTime();
         R.generateWeek(0);
     });
+
+    // $.get("/",{"activity_id":activity.attr("id"),"current_next_id":currentNextId,"current_prev_id":currentPrevId,"original_next_id":originalNextId,"original_prev_id":originalPrevId},function(){
+    //     R.calculateActivityTime();
+    //     R.generateWeek(0);
+    // });
 
 
 };
