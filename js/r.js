@@ -129,14 +129,10 @@ R.generateWeek = function(weekNum){
 //after clicking "add" activity form, it takes the slot that contains this "add btn" and append the slot to the "chronolist" container in the html
 R.initRepository = function(){
 
-    $(".repository .slot .add").click(function(e){
-        e.stopPropagation();
-
         //This variable return the closest slot that is next to where the user is clicking
         var currentActivity = $(this).closest(".slot");
         $(".block-list .container").append(currentActivity);
         R.scheduleActivity(currentActivity);
-    });
 };
 
 R.sortBlockList = function(){
