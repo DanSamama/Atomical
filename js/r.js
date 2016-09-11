@@ -12,7 +12,7 @@ R.init = function(){
         });
         //cross to close the pop-ip form
         $(".closingGrass").click(function(){
-               $(".popup-wrapper").css("display","none")
+            $(".popup-wrapper").css("display","none")
         });
         //Clicking on the generate calendar button, refresh the calendar
         $("#generateCalendar").click(function(){
@@ -34,25 +34,27 @@ R.init = function(){
 
 
 
-            $(".block-list #slots-container2").sortable({
-                connectWith: ".connectedSortable",
-                update :function(event, ui){
-                  R.scheduleActivity(ui.item);
-                    console.log("CHANGEEEEE")
-             },
-                 receive:function(event, ui){
-                  console.log("RECEIVE")
-                      R.scheduleActivity(ui.item);
-              }
-            }).disableSelection();
+        $(".block-list #slots-container2").sortable({
+            connectWith: ".connectedSortable",
+            update :function(event, ui){
+
+                $("#slots-container2 button.delete").css("display", "none");            //removing the "delete" button from "chronoList" activities 
+                R.scheduleActivity(ui.item);
+                console.log("CHANGEEEEE")
+            },
+            receive:function(event, ui){
+                console.log("RECEIVE")
+                R.scheduleActivity(ui.item);
+            }
+        }).disableSelection();
 
 
-            $(".repository #slots-container").sortable({
-                connectWith: ".connectedSortable",
-                 stop:function(event, ui){
+        $(".repository #slots-container").sortable({
+            connectWith: ".connectedSortable",
+            stop:function(event, ui){
                 //  R.scheduleActivity(ui.item);
-             }
-            }).disableSelection();
+            }
+        }).disableSelection();
 
 
 
@@ -62,14 +64,21 @@ R.init = function(){
         //create new activity form
         $("#activityForm").bind("submit",function () {
             $.post("/activity",$(this).serialize(),function(result){
-               $(".popup-wrapper").css("display","none");
+                $(".popup-wrapper").css("display","none");
                 $(".popup").css("display","none");
                 var createdActivity = $(result);
-                $( ".repository #slots-container" ).prepend(createdActivity)
-            });
+                $( ".repository #slots-container" ).prepend(createdActivity);
 
+                $(".repoDroppable .delete").click(function(e) {
+                    e.stopPropagation();
+                    var currentActivity = $(this).closest(".slot");
+                    currentActivity.css("display", "none");
+                    R.scheduleActivity(currentActivity);
+                })
+            });
             return false;
-        });
+        })
+
     });
 };
 
@@ -105,6 +114,7 @@ R.calculateActivityTime = function () {
         currentActivity.attr("data-day",calculatedDayNumber);
         currentActivity.attr("data-hour",calculatedHour);
         currentActivity.append("week: " + calculatedWeekNumber + " day: " + calculatedDayNumber + " hour: " + calculatedHour)
+
     });
 
 };
@@ -115,7 +125,7 @@ R.generateWeek = function(weekNum){
     $(".week-schedule .day .content").empty();
     weekActivities.each(function(){
         var currentActivity = $(this);
-        console.log("container slot."+currentActivity.attr("data-type"))
+        console.log("container slot."+currentActivity.attr("data-type"));
         var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
         var currentActivityDay = currentActivity.attr("data-day");
         var relevantDay = $(".week-schedule .day[data-day="+ currentActivityDay +"]");
@@ -129,10 +139,24 @@ R.generateWeek = function(weekNum){
 //after clicking "add" activity form, it takes the slot that contains this "add btn" and append the slot to the "chronolist" container in the html
 R.initRepository = function(){
 
+    // This variable return the closest slot that is next to where the user is clicking
+    $(".repository .slot .add").click(function(e){
+        e.stopPropagation();
+
         //This variable return the closest slot that is next to where the user is clicking
         var currentActivity = $(this).closest(".slot");
         $(".block-list .container").append(currentActivity);
         R.scheduleActivity(currentActivity);
+    });
+
+
+    // var currentActivity = $(this).closest(".slot");
+    // $(".block-list .container").append(currentActivity);
+    // R.scheduleActivity(currentActivity);
+
+
+    //deleting the activity from the Repository
+  
 };
 
 R.sortBlockList = function(){
@@ -184,7 +208,7 @@ R.scheduleActivity = function(activity){
         originalPrevId = originalPrev.attr("id");
         originalNextId = originalNext.attr("id");
         console.log("i was not first");
-      
+
         originalPrev.attr("data-next", originalNextId)
     }
 
@@ -218,7 +242,7 @@ R.scheduleActivity = function(activity){
 
 
     $.get("/schedule_activity",{"activity_id":activity.attr("id"),"current_next_id":currentNextId,"current_prev_id":currentPrevId,"original_next_id":originalNextId,"original_prev_id":originalPrevId},function(){
-        console.log("updated server calling calculate activity")
+        console.log("updated server calling calculate activity");
         R.calculateActivityTime();
         R.generateWeek(0);
     });
