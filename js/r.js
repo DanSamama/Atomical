@@ -59,7 +59,7 @@ R.init = function(){
         //$( "ul, li" ).disableSelection();
 
 
-
+        //create new activity form
         $("#activityForm").bind("submit",function () {
             $.post("/activity",$(this).serialize(),function(result){
                $(".popup-wrapper").css("display","none");
@@ -179,7 +179,6 @@ R.scheduleActivity = function(activity){
     var nextActivity = activity.next();
     var originalPrevId, originalNextId, currentPrevId, currentNextId;
 
-    console.log("here!!!")
 
     if (originalPrev.length == 0){
         originalPrevId ="None";

@@ -104,6 +104,8 @@ class ScheduleActivity(webapp2.RequestHandler):
         originalNextId = self.request.get("original_next_id")
         originalPrevId = self.request.get("original_prev_id")
 
+
+
         if originalPrevId == "None":
             pass
             #console.log("i was first");
