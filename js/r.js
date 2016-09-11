@@ -150,13 +150,6 @@ R.initRepository = function(){
     });
 
 
-    // var currentActivity = $(this).closest(".slot");
-    // $(".block-list .container").append(currentActivity);
-    // R.scheduleActivity(currentActivity);
-
-
-    //deleting the activity from the Repository
-  
 };
 
 R.sortBlockList = function(){
@@ -254,7 +247,6 @@ R.scheduleActivity = function(activity){
 
 
 };
-
 
 
 R.init();
