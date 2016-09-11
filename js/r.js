@@ -36,7 +36,7 @@ R.init = function(){
 
             $(".block-list #slots-container2").sortable({
                 connectWith: ".connectedSortable",
-                update:function(event, ui){
+                update :function(event, ui){
                   R.scheduleActivity(ui.item);
                     console.log("CHANGEEEEE")
              },
