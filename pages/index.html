@@ -34,7 +34,7 @@
 			<section class="repository">
 				<ul id="slots-container" class="container connectedSortable repoDroppable">
 					{% for activity in repository %}
-						{% include "/templates/repository_activity.html" %}
+					{% include "/templates/repository_activity.html" %}
 					{% endfor %}
 				</ul>
 				<ul  class="container">
@@ -45,15 +45,15 @@
 		<div class="right-panel">
 			<div class="inner-panel-container">
 				<div class="top-panel">
-                    <button id="generateCalendar" >Generate Calendar</button>
+					<button id="generateCalendar" >Generate Calendar</button>
 					<section class="block-list">
 						<ul id="slots-container2" class="container connectedSortable BlockListDroppable ">
 							{% for activity in chrono_list %}
 							<li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}"
 								data-type={{activity.type|lower}} data-activity-title="{{activity.title}}"
 								data-next="{{activity.next}}"
-                                class="draggable shadowed {{activity.type|lower}} slot block ui-widget-content dragActivBlockList">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}
-                            </li>
+								class="draggable shadowed {{activity.type|lower}} slot block ui-widget-content dragActivBlockList">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}
+							</li>
 
 							{% endfor %}
 						</ul>
@@ -61,6 +61,12 @@
 				</div>
 				<div class="bottom-panel">
 					<section class="week-schedule">
+
+						<button id="prevWeek"><<</button>
+						 <span id="weekNum">week number!!!</span>
+
+						<button id="nextWeek">>></button>
+
 						<div class="week">
 							<div class="day" data-day="0">
 								<div class="title">Sunday</div>
@@ -98,7 +104,7 @@
 	</div>
 	<div class="popup-wrapper">
 		<div class="popup">
-            <div class="closingGrass">x</div>
+			<div class="closingGrass">x</div>
 			<form id="activityForm" method="POST" action="/activity">
 				<label>Title:<input type="text" name="title"></label><br/>
 				<label>program:<input type="text" name="program"></label><br/>

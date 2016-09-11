@@ -22,7 +22,7 @@ R.init = function(){
         R.sortBlockList();
         R.initRepository();
         R.calculateActivityTime();
-        R.generateWeek(0);
+        // R.generateWeek(0);
         $(".left-panel").resizable({
             resizeHeight: false
         });
@@ -31,6 +31,23 @@ R.init = function(){
         });
 
 
+        //switching between weeks in the calendar
+        counter = 0;
+        $("#prevWeek").click(function () {
+
+            if ( counter > 0){
+                counter--;
+                R.generateWeek(counter);
+            }
+            else{
+                $("#prevWeek").css("disabled", "true")
+            }
+        });
+
+        $("#nextWeek").click(function () {
+            counter++;
+            R.generateWeek(counter);
+        });
 
 
 
@@ -40,10 +57,8 @@ R.init = function(){
 
                 $("#slots-container2 button.delete").css("display", "none");            //removing the "delete" button from "chronoList" activities 
                 R.scheduleActivity(ui.item);
-                console.log("CHANGEEEEE")
             },
             receive:function(event, ui){
-                console.log("RECEIVE")
                 R.scheduleActivity(ui.item);
             }
         }).disableSelection();
@@ -134,6 +149,7 @@ R.generateWeek = function(weekNum){
         relevantDay.find(".content").append(activityRepresentation);
     });
 };
+
 
 
 //after clicking "add" activity form, it takes the slot that contains this "add btn" and append the slot to the "chronolist" container in the html
