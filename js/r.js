@@ -22,7 +22,7 @@ R.init = function(){
         R.sortBlockList();
         R.initRepository();
         R.calculateActivityTime();
-        // R.generateWeek(0);
+        R.generateWeek(0);
         $(".left-panel").resizable({
             resizeHeight: false
         });
@@ -32,22 +32,27 @@ R.init = function(){
 
 
         //switching between weeks in the calendar
-        counter = 0;
-        $("#prevWeek").click(function () {
+        (function () {
+            var counter = 0;
+            $("#weekNum").text("Week # " + counter);
+            $("#prevWeek").click(function () {
 
-            if ( counter > 0){
-                counter--;
+                if ( counter > 0){
+                    counter--;
+                    R.generateWeek(counter);
+                    $("#weekNum").text("Week # " + counter);
+                }
+                else{
+                    $("#prevWeek").css("disabled", "true")
+                }
+            });
+
+            $("#nextWeek").click(function () {
+                counter++;
+                $("#weekNum").text("Week # " + counter);
                 R.generateWeek(counter);
-            }
-            else{
-                $("#prevWeek").css("disabled", "true")
-            }
-        });
-
-        $("#nextWeek").click(function () {
-            counter++;
-            R.generateWeek(counter);
-        });
+            });
+        })();
 
 
 
@@ -101,14 +106,15 @@ R.calculateActivityTime = function () {
     //print on every activity its date and calendar hours based on its index position
 
     //var currentWeek = 1;
-    //var dayStartingHour = 9;
-    //var dayEndingHour = 17;
+    var dayStartingHour = 9;
+    var dayEndingHour = 18;
     var numOfWeeks = 20;
-    var dailyLength = 8;
+    var dailyLength = 9;
     var daysInWeek = 5;
     var hoursInAweek = dailyLength * daysInWeek;
     var hoursCounter = 0;
     var hoursSkipped = 0;
+    var totalDailyHours = 0;
 
     $(".block-list .slot").each(function(){
         var currentActivity = $(this);
@@ -117,28 +123,59 @@ R.calculateActivityTime = function () {
         var calculatedHourInCurrentWeek = hoursCounter % hoursInAweek;
         var calculatedHour = calculatedHourInCurrentWeek % dailyLength;
         var remaningDayHours = dailyLength - calculatedHour;
+        var calculatedActivityStart = dayStartingHour + (hoursCounter - Math.floor(hoursCounter/dailyLength)*9);
+        var calculateActivityEnd = calculatedActivityStart + currentActivityLength;
+
         if (remaningDayHours  < currentActivityLength){
             hoursSkipped += remaningDayHours;
             hoursCounter += hoursSkipped;
             calculatedHourInCurrentWeek = hoursCounter % hoursInAweek;
             calculatedHour = calculatedHourInCurrentWeek % dailyLength;
+            // calculatedActivityStart = dayStartingHour + hoursCounter;
         }
         var calculatedDayNumber = Math.floor(calculatedHourInCurrentWeek / dailyLength);
+
         hoursCounter += currentActivityLength;
+        // if (hoursCounter>= dailyLength) {
+        //     // hoursCounter = 0;
+        //     remaningDayHours = dailyLength;
+        // }
+
+
+        // var activityStart = (calculatedActivityStart % daysInWeek) +  dayStartingHour;
+        // console.log(calculatedActivityStart + "the activityStart = "  + activityStart);
+        // console.log("remaining daily hours: " + remaningDayHours + "hours counter" + hoursCounter);
+
+
+
+        if (calculateActivityEnd > dayEndingHour){
+            totalDailyHours = 0;
+            calculatedActivityStart = dayStartingHour + totalDailyHours;
+            calculateActivityEnd = calculatedActivityStart + currentActivityLength;
+            totalDailyHours += currentActivityLength;
+            console.log("total daily hours: "+totalDailyHours + "       activity start: "+ calculatedActivityStart + "activity ends: "+ calculateActivityEnd)
+        }
+        else {
+             totalDailyHours += currentActivityLength;
+        }
+
         currentActivity.attr("data-week",calculatedWeekNumber);
         currentActivity.attr("data-day",calculatedDayNumber);
         currentActivity.attr("data-hour",calculatedHour);
-        currentActivity.append("week: " + calculatedWeekNumber + " day: " + calculatedDayNumber + " hour: " + calculatedHour)
 
+        currentActivity.text("");
+        currentActivity.append("week: " + calculatedWeekNumber + " ----day: " + calculatedDayNumber + "----start: " + calculatedActivityStart + "----end: " +calculateActivityEnd )
     });
-
 };
 
 
 R.generateWeek = function(weekNum){
+    console.log("generate week run!");
     var weekActivities = $(".block-list .slot[data-week="+weekNum+"]");
     $(".week-schedule .day .content").empty();
     weekActivities.each(function(){
+            console.log("generate week in!!");
+
         var currentActivity = $(this);
         console.log("container slot."+currentActivity.attr("data-type"));
         var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
@@ -164,8 +201,6 @@ R.initRepository = function(){
         $(".block-list .container").append(currentActivity);
         R.scheduleActivity(currentActivity);
     });
-
-
 };
 
 R.sortBlockList = function(){
