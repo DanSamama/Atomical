@@ -93,7 +93,7 @@ R.init = function () {
                     e.stopPropagation();
                     var currentActivity = $(this).closest(".slot");
                     currentActivity.css("display", "none");
-                    R.scheduleActivity(currentActivity);
+                    // R.scheduleActivity(currentActivity);
                 })
             });
             return false;
@@ -119,8 +119,6 @@ R.calculateActivityTime = function () {
         var currentActivity = $(this);
         var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
         var calculatedWeekNumber = Math.floor(hoursCounter / hoursInAweek);
-        var calculatedHourInCurrentWeek = hoursCounter % hoursInAweek;
-        var calculatedHour = calculatedHourInCurrentWeek % dailyLength;
         var remaningDayHours = dailyLength - calculatedHour;
         var calculatedActivityStart = dayStartingHour + (hoursCounter - Math.floor(hoursCounter / dailyLength) * 9);
         var calculateActivityEnd = calculatedActivityStart + currentActivityLength;
@@ -128,10 +126,10 @@ R.calculateActivityTime = function () {
         if (remaningDayHours < currentActivityLength) {
             hoursSkipped += remaningDayHours;
             hoursCounter += hoursSkipped;
-            calculatedHourInCurrentWeek = hoursCounter % hoursInAweek;
-            calculatedHour = calculatedHourInCurrentWeek % dailyLength;
-            // calculatedActivityStart = dayStartingHour + hoursCounter;
+             // calculatedActivityStart = dayStartingHour + hoursCounter;
         }
+        var calculatedHourInCurrentWeek = hoursCounter % hoursInAweek;
+        var calculatedHour = calculatedHourInCurrentWeek % dailyLength;
         var calculatedDayNumber = Math.floor(calculatedHourInCurrentWeek / dailyLength);
 
         hoursCounter += currentActivityLength;
@@ -139,7 +137,7 @@ R.calculateActivityTime = function () {
         //     // hoursCounter = 0;
         //     remaningDayHours = dailyLength;
         // }
-
+        console.log("currentActivityLength " + currentActivityLength);
 
         // var activityStart = (calculatedActivityStart % daysInWeek) +  dayStartingHour;
         // console.log(calculatedActivityStart + "the activityStart = "  + activityStart);
