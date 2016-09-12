@@ -11,7 +11,6 @@ import jinja2
 jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 
-
 def getAppVersion():
     return "v0.0.1"
 
@@ -37,7 +36,7 @@ class MainHandler(webapp2.RequestHandler):
 
 
 class ChronoList(webapp2.RequestHandler):
-    def get(self,program,cohort):
+    def get(self, program, cohort):
         template = jinja_environment.get_template('/pages/index.html')
         context = {}
         context["version"] = getAppVersion()
@@ -66,16 +65,14 @@ class ActivityForm(webapp2.RequestHandler):
         newActivity.status = "IN_REPOSITORY"
         newActivity.put()
         template = jinja_environment.get_template('/templates/repository_activity.html')
-        context ={}
+        context = {}
         context["activity"] = newActivity
         self.response.write(template.render(context))
 
 
-
-
 class CreateDb(webapp2.RequestHandler):
     def get(self):
-        activities = [{"title":"dan","type":"LECTURE","desc":"something...","time_slots":3},
+        activities = [{"title": "dan", "type": "LECTURE", "desc": "something...", "time_slots": 3},
                       {"title": "tzvi", "type": "LECTURE", "desc": "something...", "time_slots": 3},
                       {"title": "hilly", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 2},
                       {"title": "gilad", "type": "EXERCISE", "desc": "something...", "time_slots": 3},
@@ -96,7 +93,10 @@ class CreateDb(webapp2.RequestHandler):
             newActivity.status = "IN_REPOSITORY"
             newActivity.put()
 
+
 class ScheduleActivity(webapp2.RequestHandler):
+    logging.info("ENTERING THE FUNCTIONNNNNNNN")
+
     def get(self):
         activityId = self.request.get("activity_id")
         currentNextId = self.request.get("current_next_id")
@@ -108,24 +108,24 @@ class ScheduleActivity(webapp2.RequestHandler):
 
         if originalPrevId == "None":
             pass
-            #console.log("i was first");
+            # console.log("i was first");
         else:
-            #i was not first, my original prev should point at my original next
-            logging.info("updating " + originalPrevId  + " to point at " + originalNextId)
+            # i was not first, my original prev should point at my original next
+            logging.info("updating " + originalPrevId + " to point at " + originalNextId)
             originalPrev = db.getActivityById(originalPrevId)
             if originalPrev:
                 originalPrev.next = originalNextId
                 originalPrev.put()
 
         if currentNextId == "None":
-            #i am now last
+            # i am now last
             activity = db.getActivityById(activityId)
             if activity:
                 activity.next = None
                 activity.status = "IN_CHRONOLIST"
                 activity.put()
         else:
-            #i am not last now
+            # i am not last now
             logging.info("updating " + activityId + " to point at " + currentNextId)
             activity = db.getActivityById(activityId)
             if activity:
@@ -143,13 +143,13 @@ class ScheduleActivity(webapp2.RequestHandler):
 
         else:
             pass
-            #console.log("i was not last");
+            # console.log("i was not last");
 
         if currentPrevId == "None":
             pass
-            #console.log("i am now first");
+            # console.log("i am now first");
         else:
-            #i am not first now
+            # i am not first now
             logging.info("updating " + currentPrevId + " to point at " + activityId)
             currentPrev = db.getActivityById(currentPrevId)
             if currentPrev:
@@ -157,16 +157,57 @@ class ScheduleActivity(webapp2.RequestHandler):
                 currentPrev.put()
 
 
+class updateScheduleActivity(webapp2.RequestHandler):
+    logging.info("AMAZINGGGGGGGGGGGGGGGGGG FUNCTIONNNNNNNN")
 
+    def get(self):
+        nextActivityid = self.request.get("nextActivity")
+        prevActivityid = self.request.get("prevActivity")
+        currentActivityid = self.request.get("currentActivity")
 
+        logging.info("nextActivityid: " + nextActivityid + "prevActivityid : " + prevActivityid +  "currentActivityid : " + currentActivityid )
 
+        currentActivity = db.getActivityById(currentActivityid)
+        currentActivity.status = "IN_REPOSITORY"
+        currentActivity.put()
 
+        logging.info(" currentActivity.status = " +  currentActivity.status)
+
+        if(prevActivityid is not None):
+            prevActivity = db.getActivityById(prevActivityid)
+            prevActivity.next = nextActivityid
+            prevActivity.put()
+
+            # if originalPrevId == "None":
+            #
+            #     pass
+            #     #console.log("i was first");
+            # else:
+            #     #i was not first, my original prev should point at my original next
+            #     logging.info("updating " + originalPrevId  + " to point at " + originalNextId)
+            #     originalPrev = db.getActivityById(originalPrevId)
+            #     if originalPrev:
+            #         originalPrev.next = originalNextId
+            #         originalPrev.put()
+            #
+            # if originalNextId == "None":
+            #     pass
+            #     # i was last, my original prev is now last
+            #     originalPrev = db.getActivityById(originalPrevId)
+            #     if originalPrev:
+            #         originalPrev.next = None
+            #         originalPrev.put()
+            #
+            # else:
+            #     pass
+            #     #console.log("i was not last");
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/activity', ActivityForm),
     ('/schedule_activity', ScheduleActivity),
+    ('/update_schedule_activity', updateScheduleActivity),
     ('/create_db', CreateDb),
     routes.RedirectRoute('/repository/<program>/<cohort>', handler=ChronoList, name='chronolist', strict_slash=True),
 

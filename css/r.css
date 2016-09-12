@@ -103,7 +103,7 @@ a{
 	flex: 0 0 auto;
 	height:50%;
 	width:100%;
-	overflow-y: auto;
+    overflow-y: auto;
     overflow-x: hidden;
 	text-align: center;
 }
@@ -229,4 +229,10 @@ ul{
 	float: right;
 	padding-right: 49px;
 	font-size: 33px;
+}
+#slots-container2{
+    height:50px;
+}
+.ui-resizable {
+    position: inherit;
 }
