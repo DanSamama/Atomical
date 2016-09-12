@@ -95,7 +95,7 @@ class CreateDb(webapp2.RequestHandler):
 
 
 class ScheduleActivity(webapp2.RequestHandler):
-    logging.info("ENTERING THE FUNCTIONNNNNNNN")
+    logging.info("ENTERING THE FUNCTION")
 
     def get(self):
         activityId = self.request.get("activity_id")
@@ -103,7 +103,6 @@ class ScheduleActivity(webapp2.RequestHandler):
         currentPrevId = self.request.get("current_prev_id")
         originalNextId = self.request.get("original_next_id")
         originalPrevId = self.request.get("original_prev_id")
-
 
 
         if originalPrevId == "None":
@@ -158,7 +157,7 @@ class ScheduleActivity(webapp2.RequestHandler):
 
 
 class updateScheduleActivity(webapp2.RequestHandler):
-    logging.info("AMAZINGGGGGGGGGGGGGGGGGG FUNCTIONNNNNNNN")
+    logging.info("AMAZING FUNCTION!!!!!!!")
 
     def get(self):
         nextActivityid = self.request.get("nextActivity")
@@ -203,11 +202,21 @@ class updateScheduleActivity(webapp2.RequestHandler):
             #     #console.log("i was not last");
 
 
+class DeleteActivity(webapp2.RequestHandler):
+    def get(self):
+        currentActivityid = self.request.get("currentActivity")
+
+        db.deleteActivityFromRepository(currentActivityid)
+
+
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/activity', ActivityForm),
     ('/schedule_activity', ScheduleActivity),
     ('/update_schedule_activity', updateScheduleActivity),
+    ('/delete_activity', DeleteActivity),
     ('/create_db', CreateDb),
     routes.RedirectRoute('/repository/<program>/<cohort>', handler=ChronoList, name='chronolist', strict_slash=True),
 

@@ -1,4 +1,5 @@
 from google.appengine.ext import ndb
+import logging
 
 
 def getRepositoryActivities(programId, cohortId):
@@ -15,9 +16,18 @@ def getActivityById(activityId):
     return ndb.gql("SELECT * FROM Activity WHERE id = :1", activityId).get()
 
 
-def moveToRepositoryActivityById(activityId):
-    ndb.qql("UPDATE  ACTIVITY SET STATUS = 'IN_REPOSITORY' WHERE ID= :1" , activityId)
+# def moveToRepositoryActivityById(activityId):
+#     ndb.qql("UPDATE  ACTIVITY SET STATUS = 'IN_REPOSITORY' WHERE ID= :1" , activityId)
+#
+#
+# def moveToChronolistActivityById(activityId):
+#     ndb.qql("UPDATE  ACTIVITY SET STATUS = 'IN_CHRONOLIST' WHERE ID= :1" , activityId)
+
+def deleteActivityFromRepository(activityId):
+    logging.info("FIND ME THIS INFO : "+activityId)
+    myentity = ndb.gql("SELECT * FROM Activity WHERE id = :1", activityId).get()
+    myentity.key.delete()
 
 
-def moveToChronolistActivityById(activityId):
-    ndb.qql("UPDATE  ACTIVITY SET STATUS = 'IN_CHRONOLIST' WHERE ID= :1" , activityId)
+
+

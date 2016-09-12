@@ -19,6 +19,15 @@ R.init = function () {
             location.reload();
         });
 
+        //Erase button function
+        $(".repoDroppable .delete").click(function () {
+            var currentActivity = $(this).closest(".slot");
+            console.log(currentActivity.attr("id"));
+
+            $.get("/delete_activity", {"currentActivity": currentActivity.attr("id")}, function () {
+            });
+        });
+
         R.initRepository();
         R.sortBlockList();
         R.calculateActivityTime();
@@ -59,7 +68,7 @@ R.init = function () {
             connectWith: ".connectedSortable",
             update: function (event, ui) {
 
-                $("#slots-container2 button.delete").css("display", "none");            //removing the "delete" button from "chronoList" activities
+                // $("#slots-container2 button.delete").css("display", "none");            //removing the "delete" button from "chronoList" activities
                 R.scheduleActivity(ui.item);
 
             },
@@ -89,12 +98,12 @@ R.init = function () {
                 var createdActivity = $(result);
                 $(".repository #slots-container").prepend(createdActivity);
 
-                $(".repoDroppable .delete").click(function (e) {
-                    e.stopPropagation();
-                    var currentActivity = $(this).closest(".slot");
-                    currentActivity.css("display", "none");
-                    // R.scheduleActivity(currentActivity);
-                })
+                // $(".repoDroppable .delete").click(function (e) {
+                //     e.stopPropagation();
+                //     var currentActivity = $(this).closest(".slot");
+                //     currentActivity.css("display", "none");
+                //     R.scheduleActivity(currentActivity);
+                // })
             });
             return false;
         });
@@ -308,7 +317,7 @@ R.removeScheduleActivity = function (activity) {
     // var originalPrevId, originalNextId, currentPrevId, currentNextId;
     //
     //
-    // // console.log("REMOVE MAN");
+    // // console.log("CHECK");
     //
     // if (originalPrev.length == 0){
     //     originalPrevId ="None";
@@ -347,6 +356,10 @@ R.removeScheduleActivity = function (activity) {
     });
 
 };
+
+
+
+
 
 
 R.init();
