@@ -158,6 +158,8 @@ R.calculateActivityTime = function () {
         currentActivity.attr("data-week", calculatedWeekNumber);
         currentActivity.attr("data-day", calculatedDayNumber);
         currentActivity.attr("data-hour", calculatedHour);
+        currentActivity.attr("data-activity-start", calculatedActivityStart);
+        currentActivity.attr("data-activity-end", calculateActivityEnd);
 
         currentActivity.text("");
         currentActivity.append("week: " + calculatedWeekNumber + " ----day: " + calculatedDayNumber + "----start: " + calculatedActivityStart + "----end: " + calculateActivityEnd)
@@ -170,14 +172,17 @@ R.generateWeek = function (weekNum) {
     var weekActivities = $(".block-list .slot[data-week=" + weekNum + "]");
     $(".week-schedule .day .content").empty();
     weekActivities.each(function () {
-        console.log("generate week in!!");
 
         var currentActivity = $(this);
         console.log("container slot." + currentActivity.attr("data-type"));
         var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
         var currentActivityDay = currentActivity.attr("data-day");
         var relevantDay = $(".week-schedule .day[data-day=" + currentActivityDay + "]");
-        var activityRepresentation = $("<div />").addClass(currentActivity.attr("data-type")).text(currentActivity.attr("data-activity-title"));
+
+        var activityRepresentation = $("<div />");
+        activityRepresentation.addClass(currentActivity.attr("data-type"));
+        activityRepresentation.text(currentActivity.attr("data-activity-title") + currentActivity.attr("data-activity-start") + "-" + currentActivity.attr("data-activity-end"));
+
         activityRepresentation.css("height", 50 * currentActivityLength);
         relevantDay.find(".content").append(activityRepresentation);
     });
