@@ -43,8 +43,8 @@ a{
 }
 
 .popup{
-	width:50%;
-	height:50%;
+	width:25%;
+	height:30%;
 	position:absolute;
 	top:50%;
 	left:50%;
@@ -57,28 +57,30 @@ a{
 	cursor:pointer;
 }
 
+/*SK*/
+/*.main{*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*overflow: hidden;*/
+  /*height:100%;*/
+/*}*/
 
-.main{
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height:100%;
-}
+/*.panel-container {*/
+  /*flex: 1 1 auto;*/
+  /*display: flex;*/
+  /*flex-direction: row;*/
+  /*overflow: hidden;*/
+  /*height:100%;*/
+/*}*/
 
-.panel-container {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  height:100%;
-}
-
-
+/*SK InnerPanalConta + Overflow*/
+/*SK NEW Width*/
 .inner-panel-container {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height:100%;
+	display: flex;
+	width: 40%;
+	/*flex-direction: column;*/
+	/*overflow: hidden;*/
+	height:100%;
 }
 
 
@@ -98,10 +100,10 @@ a{
 	width:70%;
 }
 
-
+/*SK Height*/
 .top-panel{
 	flex: 0 0 auto;
-	height:50%;
+	height:70%;
 	width:100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -109,22 +111,25 @@ a{
 }
 
 .bottom-panel{
-	flex: 1 1 auto;
-	height:50%;
-	width:100%;
-	border-top:3px solid #ccccff;
+	margin-top: 115px;
+	/*flex: 1 1 auto;*/
+	/*height:50%;*/
+	/*width:100%;*/
+	/*border-top:3px solid #ccccff;*/
 }
 
-
+/*SK BGColor*/
 .menu{
 	flex: 0 0 auto;
 	height:50px;
-	background-color:#ccccff;
+	background-color:#005E8B;
 }
 .repository{
 }
-.block-list{
 
+/*SK Width*/
+.block-list{
+	width: 300%;
 	padding:20px 0px;
 }
 
@@ -134,49 +139,60 @@ ul{
 	padding: 0px;
 }
 
-.shadowed{
-	-webkit-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);
-	-moz-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);
-	box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);
-}
+/*SK*/
+/*.shadowed{*/
+	/*-webkit-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
+	/*-moz-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
+	/*box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
+/*}*/
 
+/*Come back later on width 25% ???*/
 .container{
-    width: 88%;
+    width: 25%;
     margin: 6%;
 }
 
+/*SK Width*/
 .container .slot{
+	width: 300px;
 	height:70px;
 	border-radius:5px;
 	margin-bottom: 10px;
 	position: relative;
 }
 
-
+/*SK Width BGColor, Color, FontSize*/
 .container .slot.exercise, .week-schedule .exercise{
-	background-color:#69A8B3;
-	width:100%;
+	background-color:#43a0fa;
+	color: white;
+	font-size: 15px;
+	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
-
 }
 
+/*SK Width BGColor, Color, FontSize*/
 .container .slot.lecture, .week-schedule .lecture{
-	background-color:#B84F13;
-	width:100%;
+	background-color:#ff6969;
+	color: white;
+	font-size: 15px;
+	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
 }
 .container .slot.assignment, .week-schedule .assignment{
-	background-color:darkred;
-	width:100%;
+	background-color: #fde83f;
+	color: white;
+	font-size: 15px;
+	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
 }
 
+/*SK Colors*/
 .wide-btn{
-	background-color:green;
-	color:white;
+	background-color: white;
+	color: #959595;
 	font-size:40px;
 }
 
@@ -196,15 +212,33 @@ ul{
 	text-align: center;
 }
 
+/*SK Width*/
 .week{
-	width:95%;
+	width:101%;
 	display:inline-block;
 	margin:auto;
 }
 
+/*Hilly Rock*/
+/*img {*/
+	/*width: 5%;*/
+	/*display:inline-block;*/
+	/*margin:auto;*/
+/*}*/
+
+/*SK AMPM*/
+.ampm {
+	line-height: 55px;
+	margin: 10px;
+	font-size: inherit;
+	font-family: inherit;
+	color: gray;
+	display: inline-block;
+}
+
 .timeLine{
 	display: inline-block;
-   
+
     height: 500px;
     width: 50px;
     vertical-align: top;
@@ -217,11 +251,12 @@ ul{
 
 }
 
+/*SK Color Width*/
 .day{
 	display: inline-block;
-	border: solid 1px #777;
+	border: solid 1px #d3d3d3;
 	height:500px;
-	width:100px;
+	width: 94px;
 	vertical-align: top;
 }
 
@@ -235,19 +270,204 @@ ul{
 	padding: 220px;
 
 }
+
+/*SK Text align center*/
 .popup{
 	border-radius:5px;
-	text-align: center;
+	/*text-align: center;*/
 }
 
+/*SK BGColor color cursor border*/
 .closingGrass {
 	float: right;
-	padding-right: 49px;
-	font-size: 33px;
+    padding-right: 8px;
+    font-size: 25px;
+    /*background-color:  #0070a8;*/
+    color: white;
+    border: none;
+	cursor: pointer;
+	margin: 1%;
 }
+
 #slots-container2{
     height:50px;
 }
 .ui-resizable {
     position: inherit;
+}
+
+
+/***************/
+/*Shais CSS*/
+/***************/
+
+
+.calBanner{
+	margin: auto;
+    background-color: #0070a8;
+    height: 130px;
+    width: 742px;
+    font-family: arial;
+    font-size: 34px;
+    color: white;
+    text-align: left;
+    text-indent: 20px;
+}
+
+.calStartDate{
+	color: white;
+	font-family: "Calibri Light";
+	font-size: 20px;
+}
+
+.calYear{
+
+}
+
+.calCurrentDate{
+	margin-top: 20px;
+}
+
+.weekScale{
+	margin: 10px;
+}
+
+.weekNumber{
+	color: black;
+	font-size: 15px;
+	font-family: "Calibri Light";
+}
+
+.weekArrow{
+	border: none;
+    background-color: white;
+	color: gray;
+    cursor: pointer;
+}
+
+.inLineBlock{
+	display: inline-block;
+}
+
+.activityHeader{
+	background-color: #016cad;
+    height: 190px;
+    font-size: 20px;
+    color: white;
+    padding-left: 30px;
+    padding-top: 10px;
+	margin: 1%;
+}
+
+.activityTitle{
+	color: white;
+	background-color:  #016cad;
+    border: none;
+    font-size: 30px;
+    width: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+	margin: 1%;
+}
+
+.activityDesc{
+	background-color:  #016cad;
+    border: none;
+    font-size: 20px;
+    width: 93%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+
+.programTitle{
+	color: white;
+    background-color: #016cad;
+    border: none;
+    font-size: 10px;
+    width: 250%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cohortTitle{
+	color: white;
+    background-color: #016cad;
+    border: none;
+    font-size: 10px;
+    width: 25%;
+    font-family: Arial, Helvetica, sans-serif;
+	margin-left: 8px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white;
+}
+
+input, select, textarea{
+    color: white;
+}
+
+.classType{
+	margin-left: 83%;
+	margin-top: 10px;
+}
+
+.timeslot{
+	margin-left: 18%;
+    width: 22%;
+	color: black;
+}
+
+input, select, textarea .timeslot{
+    color: black;
+}
+
+textarea {
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+  }
+
+.noselect {
+   cursor: auto;
+   -webkit-user-select: none;
+   -webkit-touch-callout: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   -o-user-select: none;
+}
+
+.noselect:focus {
+   outline: none;
+}
+
+.top{
+	top: 100px;
+}
+
+.saveForm{
+    background-color: #009eff;
+    color: white;
+    width: 60px;
+    height: 25px;
+    margin-left: 85%;
+    margin-top: 2%;
+    font-size: 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+/*SCROLL*/
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: lightgray;
 }

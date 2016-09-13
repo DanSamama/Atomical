@@ -43,13 +43,13 @@ R.init = function () {
         //switching between weeks in the calendar
         (function () {
             var counter = 0;
-            $("#weekNum").text("Week # " + counter);
+            $("#weekNum").text("Week " + counter);
             $("#prevWeek").click(function () {
 
                 if (counter > 0) {
                     counter--;
                     R.generateWeek(counter);
-                    $("#weekNum").text("Week # " + counter);
+                    $("#weekNum").text("Week " + counter);
                 }
                 else {
                     $("#prevWeek").css("disabled", "true")
@@ -58,7 +58,7 @@ R.init = function () {
 
             $("#nextWeek").click(function () {
                 counter++;
-                $("#weekNum").text("Week # " + counter);
+                $("#weekNum").text("Week " + counter);
                 R.generateWeek(counter);
             });
         })();
