@@ -45,6 +45,7 @@ class ChronoList(webapp2.RequestHandler):
         self.response.write(template.render(context))
 
 
+
 class ActivityForm(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('/forms/activity.html')
@@ -213,6 +214,7 @@ class DeleteActivity(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+
     ('/activity', ActivityForm),
     ('/schedule_activity', ScheduleActivity),
     ('/update_schedule_activity', updateScheduleActivity),

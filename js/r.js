@@ -64,6 +64,7 @@ R.init = function () {
         })();
 
 
+            //making the calendar sortable
         $(".block-list #slots-container2").sortable({
             connectWith: ".connectedSortable",
             update: function (event, ui) {
@@ -78,6 +79,22 @@ R.init = function () {
         }).disableSelection();
 
 
+
+            //making the ChronoList sortable
+        $(".block-list #slots-container2").sortable({
+            connectWith: ".connectedSortable",
+            update: function (event, ui) {
+
+                $("#slots-container2 button.delete").css("display", "none");            //removing the "delete" button from "chronoList" activities
+                R.scheduleActivity(ui.item);
+
+            },
+            receive: function (event, ui) {
+                R.scheduleActivity(ui.item);
+            }
+        }).disableSelection();
+
+            //making the repository sortable
         $(".repository #slots-container").sortable({
             connectWith: ".connectedSortable",
             receive: function (event, ui) {
@@ -123,6 +140,8 @@ R.calculateActivityTime = function () {
     var hoursCounter = 0;
     var hoursSkipped = 0;
     var totalDailyHours = 0;
+
+
 
     $(".block-list .slot").each(function () {
         var currentActivity = $(this);
@@ -177,8 +196,9 @@ R.calculateActivityTime = function () {
 
 
 R.generateWeek = function (weekNum) {
-    console.log("generate week run!");
+
     var weekActivities = $(".block-list .slot[data-week=" + weekNum + "]");
+
     $(".week-schedule .day .content").empty();
     weekActivities.each(function () {
 
