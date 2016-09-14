@@ -15,3 +15,10 @@ class Activity(ndb.Model):
     time_slots = ndb.IntegerProperty()
     status = ndb.StringProperty()
     next = ndb.StringProperty()
+
+
+class Stone (ndb.Model):
+    id = ndb.StringProperty()
+    program = ndb.StringProperty()
+    cohort = ndb.StringProperty()
+    time_slots = ndb.IntegerProperty()
