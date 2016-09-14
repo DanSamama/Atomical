@@ -214,7 +214,6 @@ class DeleteActivity(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-
     ('/activity', ActivityForm),
     ('/schedule_activity', ScheduleActivity),
     ('/update_schedule_activity', updateScheduleActivity),

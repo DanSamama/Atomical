@@ -64,21 +64,6 @@ R.init = function () {
         })();
 
 
-            //making the calendar sortable
-        $(".block-list #slots-container2").sortable({
-            connectWith: ".connectedSortable",
-            update: function (event, ui) {
-
-                // $("#slots-container2 button.delete").css("display", "none");            //removing the "delete" button from "chronoList" activities
-                R.scheduleActivity(ui.item);
-
-            },
-            receive: function (event, ui) {
-                R.scheduleActivity(ui.item);
-            }
-        }).disableSelection();
-
-
 
             //making the ChronoList sortable
         $(".block-list #slots-container2").sortable({
@@ -377,6 +362,25 @@ R.removeScheduleActivity = function (activity) {
     });
 
 };
+
+// R.addingTheStone = function(activity){
+//     var previousActivityId = $(".stone").previousElementSibling.attr("id");
+//     var nextActivityId = $(".stone").nextElementSibling.attr("id");
+//
+//     if (previousActivityId == "None"){
+//         //prepend the stone to NextActivityId of the block-list
+//     }
+//     else{
+//         if (nextActivityId == "None"){
+//             //append the stone to the previousActivityId of the block-list
+//         }
+//         else{
+//             //prepend the stone to NExtActivityId or append the stone to previousActivityId of the block-list
+//         }
+//     }
+//
+//
+// };
 
 
 
