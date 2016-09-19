@@ -44,6 +44,7 @@
         </ul>
     </section>
 </div>
+
 <div class="right-panel inLineBlock">
     <div class="inner-panel-container">
         <div class="top-panel">
@@ -107,40 +108,71 @@
                     </div>
 
 
-                    <div class="day" data-day="0">
+                    <div class="day zero" data-day="0">
                         <div class="title">Sunday</div>
-                        <div class="content"></div>
+                        <div class="content">
+
+                        </div>
                     </div>
-                    <div class="day" data-day="1">
+
+                    <div class="day one" data-day="1">
                         <div class="title">Monday</div>
-                        <div class="content"></div>
+                        <div class="content">
+
+                        </div>
                     </div>
-                    <div class="day" data-day="2">
+
+                    <div class="day two" data-day="2">
                         <div class="title">Tuesday</div>
-                        <div class="content"></div>
+                        <div class="content">
+
+                        </div>
                     </div>
-                    <div class="day" data-day="3">
+
+                    <div class="day three" data-day="3">
                         <div class="title">Wednesday</div>
-                        <div class="content"></div>
+                        <div class="content">
+
+                        </div>
                     </div>
-                    <div class="day" data-day="4">
+
+                    <div class="day four" data-day="4">
                         <div class="title">Thursday</div>
-                        <div class="content"></div>
+                        <div class="content">
+
+                        </div>
                     </div>
-                    <div class="day" data-day="5">
+
+                    <div class="day five" data-day="5">
                         <div class="title">Friday</div>
-                        <div class="content"></div>
+                        <div class="content">
+
+                        </div>
                     </div>
-                    <div class="day" data-day="6">
+
+                    <div class="day six" data-day="6">
                         <div class="title">Saturday</div>
-                        <div class="content"></div>
+                        <div class="content">
+
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+
 </div>
-</div>
+
+<button id="addStone">Add a stone</button>
+
+<section class="calendarStone">
+                <ul id="slots-container" class="container connectedSortable repoDroppable">
+                    {% for stone in stone %}
+                        {% include "/templates/repository_stone.html" %}
+                    {% endfor %}
+                </ul>
+</section>
+
 <div class="popup-wrapper">
     <div class="popup">
         <div class="closingGrass">x</div>
@@ -178,5 +210,26 @@
 
     </div>
 </div>
+
+<div class="popWrapperStone">
+    <div class="popupStone">
+        <div class="stoneCreator">
+            <div class="closingPopupStone">x</div>
+            <form id="StoneForm" method="POST" action="/stone">
+                <label>program:<input type="text" name="program"></label><br/>
+                <label>cohort:<input type="text" name="cohort"></label><br/>
+                <label> <input name="type" value="STONE"> </label><br/>
+                <label>Starting Time:<input type="text" name="startTime"></label><br/>
+                <label>Duration:<input type="text" name="time_slots"></label><br/>
+                <label>Day:<input type="text" name="day"></label><br/>
+                <label>Week:<input type="text" name="week"></label><br/>
+
+                <input type="submit" value="SAVE">
+            </form>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

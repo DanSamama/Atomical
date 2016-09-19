@@ -25,7 +25,7 @@ body{
 	font-family:'FuturaBT-Light';
 	font-size:12px;
 	margin:0px;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 
 a{
@@ -399,6 +399,7 @@ ul{
 
 .inLineBlock{
 	display: inline-block;
+        vertical-align: top;
 }
 
 .activityHeader{
@@ -523,6 +524,55 @@ textarea {
     border-radius: 10px;
     background: lightgray;
 }
-.delete{
 
+/*Stone CSS*/
+
+.space{
+	height: 47px;
+	width: 94px;
+	border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px 0px;
+}
+.stoneSlot{
+	height: 47px;
+	width: 94px;
+	background-color: green;
+    border-radius: 5px;
+    margin: 5px 0px;
+
+}
+.stoneCreator {
+	height: 50px;
+	width: 50px;
+	background-color: rosybrown;
+}
+.popWrapperStone{
+    position:fixed;
+	background-color:rgba(0,0,0,0.5);
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+    display: none;
+	padding: 220px;
+}
+.popupStone{
+    width:25%;
+	height:30%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translateX(-50%) translateY(-50%);
+	background-color:white;
+}
+.closingPopupStone{
+    float: right;
+    padding-right: 8px;
+    font-size: 25px;
+    /*background-color:  #0070a8;*/
+    color: white;
+    border: none;
+	cursor: pointer;
+	margin: 34%;
 }

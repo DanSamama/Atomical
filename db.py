@@ -15,6 +15,9 @@ def getchronoListActivities(programId, cohortId):
 def getActivityById(activityId):
     return ndb.gql("SELECT * FROM Activity WHERE id = :1", activityId).get()
 
+def getStoneList(programId, cohortId):
+    return ndb.gql("SELECT * FROM Stone WHERE program = :1 and cohort = :2 ", programId, cohortId).fetch(1000)
+
 
 # def moveToRepositoryActivityById(activityId):
 #     ndb.qql("UPDATE  ACTIVITY SET STATUS = 'IN_REPOSITORY' WHERE ID= :1" , activityId)

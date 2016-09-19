@@ -22,3 +22,6 @@ class Stone (ndb.Model):
     program = ndb.StringProperty()
     cohort = ndb.StringProperty()
     time_slots = ndb.IntegerProperty()
+    startTime = ndb.IntegerProperty()
+    day = ndb.IntegerProperty()
+    week = ndb.IntegerProperty()

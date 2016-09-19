@@ -32,6 +32,7 @@ class MainHandler(webapp2.RequestHandler):
         context["version"] = getAppVersion()
         context["repository"] = db.getRepositoryActivities("bootcamp", "winter 2015")
         context["chrono_list"] = db.getchronoListActivities("bootcamp", "winter 2015")
+        context["stone"] = db.getStoneList("bootcamp", "winter 2015")
         self.response.write(template.render(context))
 
 
@@ -42,9 +43,35 @@ class ChronoList(webapp2.RequestHandler):
         context["version"] = getAppVersion()
         context["repository"] = db.getRepositoryActivities(program, cohort)
         context["chrono_list"] = db.getchronoListActivities(program, cohort)
+        context["stone"] = db.getStoneList("bootcamp", "winter 2015")
         self.response.write(template.render(context))
 
+# Stone data creation
 
+class StoneForm(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('/forms/stone.html')
+        context = {}
+        context["version"] = getAppVersion()
+        self.response.write(template.render(context))
+
+    def post(self):
+        newStone = models.Stone()
+        newStone.id = generateId()
+        newStone.program = self.request.get("program")
+        newStone.cohort = self.request.get("cohort")
+        newStone.startTime = int(self.request.get("startTime"))
+        newStone.time_slots = int(self.request.get("time_slots"))
+        newStone.day = int(self.request.get("day"))
+        newStone.week = int(self.request.get("week"))
+        newStone.type = self.request.get("STONE")
+        newStone.put()
+        template = jinja_environment.get_template('/templates/repository_stone.html')
+        context= {}
+        context["stone"] = newStone
+        self.response.write(template.render(context))
+
+# End of stone date creation
 
 class ActivityForm(webapp2.RequestHandler):
     def get(self):
@@ -78,7 +105,12 @@ class CreateDb(webapp2.RequestHandler):
                       {"title": "hilly", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 2},
                       {"title": "gilad", "type": "EXERCISE", "desc": "something...", "time_slots": 3},
                       {"title": "shai", "type": "EXERCISE", "desc": "something...", "time_slots": 1},
-                      {"title": "dana", "type": "LECTURE", "desc": "something...", "time_slots": 1}
+                      {"title": "dana", "type": "LECTURE", "desc": "something...", "time_slots": 1},
+                      {"title": "asdf", "type": "LECTURE", "desc": "something...", "time_slots": 3},
+                      {"title": "hiffsdfdslly", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 2},
+                      {"title": "giererlad", "type": "EXERCISE", "desc": "something...", "time_slots": 1},
+                      {"title": "shwerewai", "type": "EXERCISE", "desc": "something...", "time_slots": 2},
+                      {"title": "danwwwwwa", "type": "LECTURE", "desc": "something...", "time_slots": 2}
                       ]
 
         for a in activities:
@@ -214,6 +246,7 @@ class DeleteActivity(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/stone', StoneForm),
     ('/activity', ActivityForm),
     ('/schedule_activity', ScheduleActivity),
     ('/update_schedule_activity', updateScheduleActivity),
