@@ -1,12 +1,16 @@
-<li id="{{activity.id}}" class="draggable shadowed {{activity.type|lower}} slot " data-type={{activity.type|lower}}
-    data-activity-length="{{activity.time_slots}}">{{activity.title}}
 
-    <button class="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 
- 
-    <!--<form action="{{ upload_url }}" enctype="multipart/form-data" method="post">-->
+    <li id="{{activity.id}}" class="draggable shadowed {{activity.type|lower}} slot " data-type={{activity.type|lower}}
+            data-activity-length="{{activity.time_slots}}"><button class="delete"><i class="fa fa-trash-o"
+                                                                                     aria-hidden="true"></i></button>
+        {{activity.title}}
+
+        {#    <button class="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>#}
+
+
+        <!--<form action="{{ upload_url }}" enctype="multipart/form-data" method="post">-->
         <!--Files to upload: <br>-->
         <!--<input type="file" name="uploaded_files" size="40">-->
         <!--<input type="submit" value="Send">-->
-    <!--</form>-->
-</li>
+        <!--</form>-->
+    </li>

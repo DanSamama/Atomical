@@ -196,7 +196,7 @@ R.generateWeek = function (weekNum) {
         var activityRepresentation = $("<div />");
         activityRepresentation.addClass(currentActivity.attr("data-type"));
         activityRepresentation.attr("id",currentActivity.attr("id"));
-        activityRepresentation.text(currentActivity.attr("data-activity-title") + currentActivity.attr("data-activity-start") + "-" + currentActivity.attr("data-activity-end"));
+        activityRepresentation.html(currentActivity.attr("data-activity-title") + "</br>" + currentActivity.attr("data-activity-start") + "-" + currentActivity.attr("data-activity-end"));
 
         activityRepresentation.css("height", 50 * currentActivityLength);
         relevantDay.find(".content").append(activityRepresentation);

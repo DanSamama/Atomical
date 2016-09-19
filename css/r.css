@@ -25,6 +25,7 @@ body{
 	font-family:'FuturaBT-Light';
 	font-size:12px;
 	margin:0px;
+    overflow-y: hidden;
 }
 
 a{
@@ -120,9 +121,19 @@ a{
 
 /*SK BGColor*/
 .menu{
-	flex: 0 0 auto;
+	/*flex: 0 0 auto;*/
 	height:50px;
 	background-color:#005E8B;
+}
+.titleApp{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transform: translateY(27%);
+    font-size: 25px;
+    font-family: 'Indie Flower', cursive;
+
+
 }
 .repository{
 }
@@ -159,34 +170,75 @@ ul{
 	border-radius:5px;
 	margin-bottom: 10px;
 	position: relative;
+	text-align: center;
+
 }
 
 /*SK Width BGColor, Color, FontSize*/
-.container .slot.exercise, .week-schedule .exercise{
+.container .slot.exercise{
 	background-color:#43a0fa;
 	color: white;
 	font-size: 15px;
 	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
+    font-size: 21px;
+    font-weight: bold;
+}
+.week-schedule .exercise{
+    background-color:#43a0fa;
+	color: white;
+	font-size: 15px;
+	/*width:100%;*/
+	margin:5px 0px;
+	border-radius:5px;
+    font-size: 19px;
+    font-weight: bold;
 }
 
 /*SK Width BGColor, Color, FontSize*/
-.container .slot.lecture, .week-schedule .lecture{
+.container .slot.lecture{
 	background-color:#ff6969;
 	color: white;
 	font-size: 15px;
 	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
+    font-size: 21px;
+    font-weight: bold;
 }
-.container .slot.assignment, .week-schedule .assignment{
+.week-schedule .lecture{
+    background-color:#ff6969;
+	color: white;
+	font-size: 15px;
+	/*width:100px;*/
+	margin:5px 0px;
+	border-radius:5px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+
+}
+.container .slot.assignment{
 	background-color: #fde83f;
 	color: white;
 	font-size: 15px;
 	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
+    font-size: 21px;
+    font-weight: bold;
+}
+.week-schedule .assignment{
+    background-color: #fde83f;
+	color: white;
+	font-size: 15px;
+	/*width:100px;*/
+	margin:5px 0px;
+	border-radius:5px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
 }
 
 /*SK Colors*/
@@ -470,4 +522,7 @@ textarea {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: lightgray;
+}
+.delete{
+
 }
