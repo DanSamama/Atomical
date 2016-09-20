@@ -294,17 +294,17 @@ ul{
 }
 
 .timeLine{
-	display: inline-block;
-
+   display: inline-block;
     height: 500px;
     width: 50px;
     vertical-align: top;
-    padding-top: 2%;
+    padding-top: 3%;
     padding-bottom: 2%;
+   color: gray;
 }
 
 .timeLineHour {
-    margin-top: 246%;
+    margin-top: 75%;
 
 }
 
@@ -358,9 +358,8 @@ ul{
 /*Shais CSS*/
 /***************/
 
-
 .calBanner{
-	margin: auto;
+   margin: auto;
     background-color: #0070a8;
     height: 130px;
     width: 742px;
@@ -369,6 +368,7 @@ ul{
     color: white;
     text-align: left;
     text-indent: 20px;
+   margin-left: 8px;
 }
 
 .calStartDate{
@@ -464,14 +464,23 @@ input, select, textarea{
 }
 
 .classType{
-	margin-left: 83%;
-	margin-top: 10px;
+   /*margin-left: 83%;*/
+   /*margin-top: 10px;*/
+}
+
+.classMargin{
+   margin-left: 9%;
+}
+
+.hoursMargin{
+   margin-left: -64%;
 }
 
 .timeslot{
-	margin-left: 18%;
-    width: 22%;
-	color: black;
+    margin-left: 4%;
+    width: 25%;
+    color: black;
+    text-align: center;
 }
 
 input, select, textarea .timeslot{
@@ -501,20 +510,18 @@ textarea {
 .top{
 	top: 100px;
 }
-
 .saveForm{
-    background-color: #009eff;
+    background-color: #00d470;
     color: white;
     width: 60px;
     height: 25px;
     margin-left: 85%;
-    margin-top: 2%;
+    margin-top: 4%;
     font-size: 15px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
 }
-
 /*SCROLL*/
 
 /* Let's get this party started */

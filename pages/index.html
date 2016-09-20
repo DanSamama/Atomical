@@ -90,23 +90,18 @@
                     <button class="weekArrow" id="nextWeek">></button>
                 </div>
                 <div class="week">
-                    <div class="timeLine">
-                        <div class="">9:00 AM </div>
-                                <div class="timeLineHour">12:00 PM </div>
-                                <div class="timeLineHour">15:00 PM </div>
-                                <div class="timeLineHour">18:00 PM </div>
-{#                    <div class="ampm">#}
-{#                        9a</br>#}
-{#                        10a</br>#}
-{#                        11a</br>#}
-{#                        12p</br>#}
-{#                        1p</br>#}
-{#                        2p</br>#}
-{#                        3p</br>#}
-{#                        4p</br>#}
-{#                        5p</br>#}
-                    </div>
-
+                   <div class="timeLine">
+    <div class="">9a</div>
+    <div class="timeLineHour">10a</div>
+    <div class="timeLineHour">11a</div>
+    <div class="timeLineHour">12p</div>
+    <div class="timeLineHour">13p</div>
+    <div class="timeLineHour">14p</div>
+    <div class="timeLineHour">15p</div>
+    <div class="timeLineHour">16p</div>
+    <div class="timeLineHour">17p</div>
+    <div class="timeLineHour">18p</div>
+</div>
 
                     <div class="day zero" data-day="0">
                         <div class="title">Sunday</div>
@@ -181,13 +176,11 @@
                 <label>
                     <input type="text" name="title" placeholder="Title" class="activityTitle noselect"></label><br/>
                 <textarea name="desc" class="activityDesc noselect" rows="3" cols="120" placeholder="Description"></textarea><br/>
-                <label class="programTitle">Program:<input type="text" name="program"></label><br/>
-                <label class="cohortTitle">Cohort:<input type="text" name="cohort"></label><br/>
+                <label class="programTitle">Program:<input type="text" name="program" value="bootcamp"></label><br/>
+                <label class="cohortTitle">Cohort:<input type="text" name="cohort" value="winter 2015"></label><br/>
             </div>
-            {#            <label>Title:<input type="text" name="title"></label><br/>#}
-            {#            <label>program:<input type="text" name="program"></label><br/>#}
-            {#            <label>cohort:<input type="text" name="cohort"></label><br/>#}
-            <div class="inLineBlock">
+
+            <div class="inLineBlock classMargin">Class:
                 <span class="lecture inLineBlock">
 
                     <select class="classType" name="type">
@@ -198,13 +191,10 @@
                 </span>
             </div>
             <div class="inLineBlock timeslot">
-                <label><input class="timeslot" type="text" name="time_slots" placeholder="Hours"></label><br/>
+                <label class="hoursMargin">Hours:<input class="timeslot" type="text" name="time_slots" placeholder="Hours" value="1"></label><br/>
             </div>
-            {#                </br>#}
-            {#                    description:<textarea name="desc"></textarea><br/>#}
-            {#                    <label>time slots:<input type="text" name="time_slots"></label><br/>#}
-            {#                    <input type="submit" value="SAVE">#}
-            <input class="saveForm" type="submit" value="ADD">
+
+            <input class="saveForm" type="submit" value="Add">
 
         </form>
 
