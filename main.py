@@ -69,7 +69,7 @@ class StoneForm(webapp2.RequestHandler):
         template = jinja_environment.get_template('/templates/repository_stone.html')
         context= {}
         context["stone"] = newStone
-        self.response.write(template.render(context))
+        self.redirect("/") #Change for later
 
 # End of stone date creation
 
@@ -100,17 +100,26 @@ class ActivityForm(webapp2.RequestHandler):
 
 class CreateDb(webapp2.RequestHandler):
     def get(self):
-        activities = [{"title": "dan", "type": "LECTURE", "desc": "something...", "time_slots": 3},
-                      {"title": "tzvi", "type": "LECTURE", "desc": "something...", "time_slots": 3},
-                      {"title": "hilly", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 2},
-                      {"title": "gilad", "type": "EXERCISE", "desc": "something...", "time_slots": 3},
-                      {"title": "shai", "type": "EXERCISE", "desc": "something...", "time_slots": 1},
-                      {"title": "dana", "type": "LECTURE", "desc": "something...", "time_slots": 1},
-                      {"title": "asdf", "type": "LECTURE", "desc": "something...", "time_slots": 3},
-                      {"title": "hiffsdfdslly", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 2},
-                      {"title": "giererlad", "type": "EXERCISE", "desc": "something...", "time_slots": 1},
-                      {"title": "shwerewai", "type": "EXERCISE", "desc": "something...", "time_slots": 2},
-                      {"title": "danwwwwwa", "type": "LECTURE", "desc": "something...", "time_slots": 2}
+        activities = [{"title": "JAVA101", "type": "LECTURE", "desc": "something...", "time_slots": 3},
+                      {"title": "JAVA 101", "type": "EXERCISE", "desc": "something...", "time_slots": 3},
+                      {"title": "JAVA 101", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 3},
+                      {"title": "CSS Intro to design", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 2},
+                      {"title": "CSS Bootstrap", "type": "EXERCISE", "desc": "something...", "time_slots": 2},
+                      {"title": "CSS Responsive", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 2},
+                      {"title": "Angular basics", "type": "LECTURE", "desc": "something...", "time_slots": 3},
+                      {"title": "Angular advanced", "type": "EXERCISE", "desc": "something...", "time_slots": 1},
+                      {"title": "Python", "type": "LECTURE", "desc": "something...", "time_slots": 1},
+                      {"title": "Python", "type": "EXERCISE", "desc": "something...", "time_slots": 1},
+                      {"title": "Django", "type": "LECTURE", "desc": "something...", "time_slots": 3},
+                      {"title": "Django", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 3},
+                      {"title": "SQL intro", "type": "LECTURE", "desc": "something...", "time_slots": 2},
+                      {"title": "Github", "type": "LECTURE", "desc": "something...", "time_slots": 1},
+                      {"title": "Github", "type": "ASSIGNMENT", "desc": "something...", "time_slots": 1},
+                      {"title": "Project Management", "type": "LECTURE", "desc": "something...", "time_slots": 2},
+                      {"title": "Javascript Intro", "type": "LECTURE", "desc": "something...", "time_slots": 2},
+                      {"title": "Jquery", "type": "LECTURE", "desc": "something...", "time_slots": 3},
+                      {"title": "DOM", "type": "LECTURE", "desc": "something...", "time_slots": 3}
+
                       ]
 
         for a in activities:

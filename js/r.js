@@ -38,6 +38,7 @@ R.init = function () {
             console.log(currentActivity.attr("id"));
 
             $.get("/delete_activity", {"currentActivity": currentActivity.attr("id")}, function () {
+                currentActivity.remove();
             });
         });
 
