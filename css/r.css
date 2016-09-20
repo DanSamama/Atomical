@@ -135,8 +135,6 @@ a{
 
 
 }
-.repository{
-}
 
 /*SK Width*/
 .block-list{
@@ -158,9 +156,15 @@ ul{
 /*}*/
 
 /*Come back later on width 25% ???*/
-.container{
+.repository .container{
     width: 100%;
-    margin: 6%;
+    margin-left: 19%;
+    margin-top: 24%;
+}
+.block-list .container{
+    width: 100%;
+    margin-left: 7%;
+    margin-top: 95px;
 }
 
 /*SK Width*/
@@ -180,7 +184,7 @@ ul{
 	color: white;
 	font-size: 15px;
 	/*width:100%;*/
-	margin:5px 0px;
+	margin:3px 0px;
 	border-radius:5px;
     font-size: 21px;
     font-weight: bold;
@@ -575,4 +579,10 @@ textarea {
     border: none;
 	cursor: pointer;
 	margin: 34%;
+}
+.repo-panel.inLineBlock{
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 23%;
+    height: 74%;
 }
