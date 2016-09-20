@@ -221,7 +221,7 @@ R.calculateActivityTime = function () {
 
         currentActivity.text("");
 
-        var text = currentActivity.html(( activityTitle + "</br>"+ "</br>" + currentActivityLength + " Hr." ));
+        var text = currentActivity.html(( activityTitle + "</br>" + currentActivityLength + " Hr." ));
 
         currentActivity.append(text);
     });
