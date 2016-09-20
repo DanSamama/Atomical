@@ -209,6 +209,7 @@ R.calculateActivityTime = function () {
         console.log("currentActivityLength " + currentActivityLength);
 
 
+
         currentActivity.attr("data-week", calculatedWeekNumber);
         currentActivity.attr("data-day", calculatedDayNumber);
         currentActivity.attr("data-hour", calculatedHour);
@@ -217,9 +218,11 @@ R.calculateActivityTime = function () {
         currentActivity.attr("data-activity-time_slots", currentActivityLength);
         currentActivity.attr("data-activity-title", activityTitle);
 
+
         currentActivity.text("");
 
-        var text = currentActivity.html(( activityTitle + "</br>"+ currentActivityLength + " Hr." ));
+        var text = currentActivity.html(( activityTitle + "</br>"+ "</br>" + currentActivityLength + " Hr." ));
+
         currentActivity.append(text);
     });
 };
@@ -503,3 +506,12 @@ R.removeScheduleActivity = function (activity) {
 
 
 R.init();
+
+
+
+
+
+
+
+
+
