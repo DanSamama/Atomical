@@ -16,16 +16,6 @@ R.init = function () {
             $(".popupStone").css("display", "block");
         });
 
-        // //Appending the stone to the calendar
-        // var firstStone = $(".myStone");
-        // // var calculatedSize = 2 * 47;
-        // // firstStone.style("height","calculatedSize"+"px");
-        // $(".day.five .space.four").before(firstStone[0]);
-        // (firstStone.next('div')[0]).remove();
-        // // firstStone.next('div').remove();
-        // // $(".day.five .space.four").next('div').remove();
-        // // $(".day.five .space.four").remove();
-        // // firstStone.next().css("background-color","blue");
 
         //cross to close the Stone pop-up form
         $(".closingPopupStone").click(function () {
@@ -123,12 +113,6 @@ R.init = function () {
                 var createdActivity = $(result);
                 $(".repository #slots-container").prepend(createdActivity);
 
-                // $(".repoDroppable .delete").click(function (e) {
-                //     e.stopPropagation();
-                //     var currentActivity = $(this).closest(".slot");
-                //     currentActivity.css("display", "none");
-                //     R.scheduleActivity(currentActivity);
-                // })
             });
             return false;
         });
@@ -138,7 +122,6 @@ R.init = function () {
 R.calculateActivityTime = function () {
     //print on every activity its date and calendar hours based on its index position
 
-    //var currentWeek = 1;
     var dayStartingHour = 9;
     var dayEndingHour = 18;
     var numOfWeeks = 20;
@@ -152,6 +135,8 @@ R.calculateActivityTime = function () {
 
     $(".block-list .slot").each(function () {
         var currentActivity = $(this);
+        var activityTitle = currentActivity.attr("data-activity-title");
+        var activityType = currentActivity.attr("data-activity-type")
         var currentActivityLength = parseInt(currentActivity.attr("data-activity-length"));
         var calculatedWeekNumber = Math.floor(hoursCounter / hoursInAweek);
 
@@ -184,18 +169,7 @@ R.calculateActivityTime = function () {
             calculatedActivityStart = dayStartingHour + (hoursCounter - Math.floor(hoursCounter / dailyLength) * 9);
             calculateActivityEnd = calculatedActivityStart + currentActivityLength;
         }
-        // var stone = $(".stoneSlot");
-        // if (stone){
-        //     stone.each(function(){
-        //     if ((stone.attr("data-stone-week") === calculatedWeekNumber)&&(stone.attr("data-stone-day") === calculatedDayNumber) && (stone.attr("data-stone-start") === calculatedActivityStart)) {
-        //
-        //
-        //     }
-        //     })
-        // }
-        //     //append the anchore
-        //     $(".anchor[data-dayt= f" )
-        // }
+
 
         if (remaningDayHours < currentActivityLength) {
             hoursSkipped += remaningDayHours;
@@ -205,8 +179,6 @@ R.calculateActivityTime = function () {
             calculatedDayNumber = Math.floor(calculatedHourInCurrentWeek / dailyLength);
             calculatedActivityStart = dayStartingHour + (hoursCounter - Math.floor(hoursCounter / dailyLength) * 9);
             calculateActivityEnd = calculatedActivityStart + currentActivityLength;
-
-
 
 
             //Shit
@@ -230,36 +202,11 @@ R.calculateActivityTime = function () {
                 calculatedActivityStart = dayStartingHour + (hoursCounter - Math.floor(hoursCounter / dailyLength) * 9);
                 calculateActivityEnd = calculatedActivityStart + currentActivityLength;
             }
-
-
         }
-       // var calculatedHourInCurrentWeek = hoursCounter % hoursInAweek;
-        //var calculatedHour = calculatedHourInCurrentWeek % dailyLength;
-        //var calculatedDayNumber = Math.floor(calculatedHourInCurrentWeek / dailyLength);
 
         hoursCounter += currentActivityLength;
-        // if (hoursCounter>= dailyLength) {
-        //     // hoursCounter = 0;
-        //     remaningDayHours = dailyLength;
-        // }
+
         console.log("currentActivityLength " + currentActivityLength);
-
-        // var activityStart = (calculatedActivityStart % daysInWeek) +  dayStartingHour;
-        // console.log(calculatedActivityStart + "the activityStart = "  + activityStart);
-        // console.log("remaining daily hours: " + remaningDayHours + "hours counter" + hoursCounter);
-
-
-         // if (calculateActivityEnd > dayEndingHour) {
-         //          totalDailyHours = 0;
-         //          calculatedActivityStart = dayStartingHour ;
-         //          calculateActivityEnd = calculatedActivityStart + currentActivityLength;
-         //          //totalDailyHours += currentActivityLength;
-         //          calculatedHourInCurrentWeek = hoursCounter % hoursInAweek;
-         //          calculatedHour = calculatedHourInCurrentWeek % dailyLength;
-         //          calculatedDayNumber = Math.floor(calculatedHourInCurrentWeek / dailyLength);
-         //     //     console.log("total daily hours: " + totalDailyHours + "       activity start: " + calculatedActivityStart + "activity ends: " + calculateActivityEnd)
-         // }
-          //  totalDailyHours += currentActivityLength;
 
 
         currentActivity.attr("data-week", calculatedWeekNumber);
@@ -267,9 +214,13 @@ R.calculateActivityTime = function () {
         currentActivity.attr("data-hour", calculatedHour);
         currentActivity.attr("data-activity-start", calculatedActivityStart);
         currentActivity.attr("data-activity-end", calculateActivityEnd);
+        currentActivity.attr("data-activity-time_slots", currentActivityLength);
+        currentActivity.attr("data-activity-title", activityTitle);
 
         currentActivity.text("");
-        currentActivity.append("week: " + calculatedWeekNumber + " ----day: " + calculatedDayNumber + "calc hour in day: " + calculatedHour + "----start: " + calculatedActivityStart + "----end: " + calculateActivityEnd)
+
+        var text = currentActivity.html(( activityTitle + "</br>"+ currentActivityLength + " Hr." ));
+        currentActivity.append(text);
     });
 };
 

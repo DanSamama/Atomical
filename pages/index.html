@@ -33,6 +33,10 @@
 {#	<div class="panel-container">#}
 {#		<div class="left-panel">#}
 <div class="repo-panel inLineBlock">
+
+{#****************REPOSITORY********************#}
+
+<div class="inLineBlock">
     <section class="repository">
         <ul id="slots-container" class="container connectedSortable repoDroppable">
             {% for activity in repository %}
@@ -47,21 +51,27 @@
 
 <div class="right-panel inLineBlock">
     <div class="inner-panel-container">
+
+    {#****************CHRONO-LIST********************#}
+
         <div class="top-panel">
-{#            <button id="generateCalendar" >Generate Calendar</button>#}
             <section class="block-list">
                 <ul id="slots-container2" class="container connectedSortable BlockListDroppable ">
                     {% for activity in chrono_list %}
                         <li id="{{activity.id}}" data-activity-length="{{activity.time_slots}}"
                             data-type={{activity.type|lower}} data-activity-title="{{activity.title}}"
                             data-next="{{activity.next}}"
-                            class="draggable shadowed {{activity.type|lower}} slot block ui-widget-content dragActivBlockList">({{activity.time_slots}}){{activity.title}} {{activity.id}} ---> {{activity.next}}
+                            class="draggable shadowed {{activity.type|lower}} slot block ui-widget-content dragActivBlockList">
                         </li>
 
                     {% endfor %}
                 </ul>
             </section>
         </div>
+
+
+    {#****************CALENDAR********************#}
+
         <div class="bottom-panel inLineBlock">
             <div class="calBanner">
                 <div class="calStartDate">
@@ -76,13 +86,6 @@
             </div>
             <section class="week-schedule inLineBlock">
 
-{#                Hillys Week Number#}
-{#                <button id="prevWeek"><<</button>#}
-{#                <span id="weekNum"></span>#}
-{##}
-{#                <button id="nextWeek">>></button>#}
-                {#                        Hillys Stone#}
-                {#                        <div class="stone connectedSortable"><img src="../fonts/stone-png-1.png"></div>#}
 
                 <div class="weekScale">
                     <button class="weekArrow" id="prevWeek"><</button>
@@ -95,16 +98,6 @@
                                 <div class="timeLineHour">12:00 PM </div>
                                 <div class="timeLineHour">15:00 PM </div>
                                 <div class="timeLineHour">18:00 PM </div>
-{#                    <div class="ampm">#}
-{#                        9a</br>#}
-{#                        10a</br>#}
-{#                        11a</br>#}
-{#                        12p</br>#}
-{#                        1p</br>#}
-{#                        2p</br>#}
-{#                        3p</br>#}
-{#                        4p</br>#}
-{#                        5p</br>#}
                     </div>
 
 
@@ -184,9 +177,7 @@
                 <label class="programTitle">Program:<input type="text" name="program"></label><br/>
                 <label class="cohortTitle">Cohort:<input type="text" name="cohort"></label><br/>
             </div>
-            {#            <label>Title:<input type="text" name="title"></label><br/>#}
-            {#            <label>program:<input type="text" name="program"></label><br/>#}
-            {#            <label>cohort:<input type="text" name="cohort"></label><br/>#}
+
             <div class="inLineBlock">
                 <span class="lecture inLineBlock">
 
@@ -200,10 +191,7 @@
             <div class="inLineBlock timeslot">
                 <label><input class="timeslot" type="text" name="time_slots" placeholder="Hours"></label><br/>
             </div>
-            {#                </br>#}
-            {#                    description:<textarea name="desc"></textarea><br/>#}
-            {#                    <label>time slots:<input type="text" name="time_slots"></label><br/>#}
-            {#                    <input type="submit" value="SAVE">#}
+
             <input class="saveForm" type="submit" value="ADD">
 
         </form>
