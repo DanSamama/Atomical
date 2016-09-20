@@ -28,8 +28,10 @@
     <script  type="text/javascript" src="/js/r.js?v={{version}}"></script>
 </head>
 <body>
+<div class="landingPageTitle"><A HREF="javascript:history.go(0)" class="landingPageTitle">AT&nbsp&nbsp&nbsp&nbspMICAL</A></div>
+<div class="logo"></div>
 {#<div class="main">#}
-<section class="menu"><div class="titleApp">What if scheduling was a breeze ? </div></section>
+<section class="menu"></section>
 {#	<div class="panel-container">#}
 {#		<div class="left-panel">#}
 <div class="repo-panel inLineBlock">
@@ -43,7 +45,9 @@
                 {% include "/templates/repository_activity.html" %}
             {% endfor %}
         </ul>
-
+        <ul  class="container">
+            <li id="add-new" class=" clickable slot wide-btn top"><i class="fa fa-plus" style="cursor: pointer"></i></li>
+        </ul>
     </section>
 </div>
 
@@ -200,15 +204,21 @@
         <div class="stoneCreator">
             <div class="closingPopupStone">x</div>
             <form id="StoneForm" method="POST" action="/stone">
-                <label>program:<input type="text" name="program"></label><br/>
-                <label>cohort:<input type="text" name="cohort"></label><br/>
-                <label> <input name="type" value="STONE"> </label><br/>
-                <label>Starting Time:<input type="text" name="startTime"></label><br/>
-                <label>Duration:<input type="text" name="time_slots"></label><br/>
-                <label>Day:<input type="text" name="day"></label><br/>
-                <label>Week:<input type="text" name="week"></label><br/>
+                <div class="activityHeader">
+                    <label><input name="type" value="Set Anchor Date"> </label><br/>
+                    <label>Program:<input type="text" name="program" value="bootcamp"></label><br/>
+                    <label>Cohort:<input type="text" name="cohort" value="winter 2015"></label><br/>
+                </div>
 
-                <input type="submit" value="SAVE">
+                <div class="stoneTitle inLineBlock">
+                    <label>Start Time:<input type="text" name="startTime"></label><br/>
+                    <label>Duration:<input type="text" name="time_slots"></label><br/>
+                    <label>Week:<input type="text" name="week"></label><br/>
+                    <label>Day:<input type="text" name="day"></label><br/>
+                </div>
+
+
+                <input class="saveStone" type="submit" value="SAVE">
             </form>
         </div>
     </div>
