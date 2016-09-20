@@ -27,6 +27,7 @@ body{
 	margin:0px;
     overflow-y: hidden;
     /*overflow-y: hidden;*/
+
 }
 
 a{
@@ -105,7 +106,7 @@ a{
 /*SK Height*/
 .top-panel{
 	flex: 0 0 auto;
-	height:70%;
+	height:75%;
 	width:100%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -158,7 +159,7 @@ ul{
 
 /*Come back later on width 25% ???*/
 .repository .container{
-    width: 100%;
+    width: 82%;
     margin-left: 19%;
     margin-top: 24%;
 }
@@ -542,7 +543,7 @@ textarea {
 .space{
 	height: 47px;
 	width: 94px;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
     border-radius: 5px;
     margin: 5px 0px;
 }
@@ -593,4 +594,5 @@ textarea {
     overflow-x: hidden;
     width: 23%;
     height: 74%;
+    max-width: 23%;
 }
