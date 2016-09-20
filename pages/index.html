@@ -50,7 +50,6 @@
 <div class="right-panel inLineBlock">
     <div class="inner-panel-container">
         <div class="top-panel">
-            {#            <button id="generateCalendar" >Generate Calendar</button>#}
             <section class="block-list">
                 <ul id="slots-container2" class="container connectedSortable BlockListDroppable ">
                     {% for activity in chrono_list %}
@@ -66,6 +65,8 @@
         </div>
         <div class="bottom-panel inLineBlock">
             <div class="calBanner">
+                <button id="addStone"><i class="fa fa-anchor" aria-hidden="true"></i></button>
+
                 <div class="calStartDate">
                     Start Date
                 </div>
@@ -152,7 +153,6 @@
 
 </div>
 
-<button id="addStone">Add a stone</button>
 
 <section class="calendarStone">
     <ul id="slots-container" class="container connectedSortable repoDroppable">

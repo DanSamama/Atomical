@@ -2,18 +2,18 @@
 	font-family: 'FuturaBT-Light';
 	src: url('../fonts/futurabtlight.eot');
 	src: url('../fonts/futurabtlight.eot?#iefix') format('embedded-opentype'),
-		 url('../fonts/futurabtlight.woff2') format('woff2'),
-		 url('../fonts/futurabtlight.woff') format('woff'),
-		 url('../fonts/futurabtlight.ttf') format('truetype');
+	url('../fonts/futurabtlight.woff2') format('woff2'),
+	url('../fonts/futurabtlight.woff') format('woff'),
+	url('../fonts/futurabtlight.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'FuturaBT-Medium';
 	src: url('../fonts/futurabtmedium.eot');
 	src: url('../fonts/futurabtmedium.eot?#iefix') format('embedded-opentype'),
-		 url('../fonts/futurabtmedium.woff2') format('woff2'),
-		 url('../fonts/futurabtmedium.woff') format('woff'),
-		 url('../fonts/futurabtmedium.ttf') format('truetype');
+	url('../fonts/futurabtmedium.woff2') format('woff2'),
+	url('../fonts/futurabtmedium.woff') format('woff'),
+	url('../fonts/futurabtmedium.ttf') format('truetype');
 }
 
 html,body{
@@ -25,8 +25,8 @@ body{
 	font-family:'FuturaBT-Light';
 	font-size:12px;
 	margin:0px;
-    overflow-y: hidden;
-    /*overflow-y: hidden;*/
+	overflow-y: hidden;
+	/*overflow-y: hidden;*/
 
 }
 
@@ -62,18 +62,18 @@ a{
 
 /*SK*/
 /*.main{*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*overflow: hidden;*/
-  /*height:100%;*/
+/*display: flex;*/
+/*flex-direction: column;*/
+/*overflow: hidden;*/
+/*height:100%;*/
 /*}*/
 
 /*.panel-container {*/
-  /*flex: 1 1 auto;*/
-  /*display: flex;*/
-  /*flex-direction: row;*/
-  /*overflow: hidden;*/
-  /*height:100%;*/
+/*flex: 1 1 auto;*/
+/*display: flex;*/
+/*flex-direction: row;*/
+/*overflow: hidden;*/
+/*height:100%;*/
 /*}*/
 
 /*SK InnerPanalConta + Overflow*/
@@ -108,8 +108,8 @@ a{
 	flex: 0 0 auto;
 	height:75%;
 	width:100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+	overflow-y: auto;
+	overflow-x: hidden;
 	text-align: center;
 }
 
@@ -128,12 +128,12 @@ a{
 	background-color:#005E8B;
 }
 .titleApp{
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    transform: translateY(27%);
-    font-size: 25px;
-    font-family: 'Indie Flower', cursive;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	transform: translateY(27%);
+	font-size: 25px;
+	font-family: 'Indie Flower', cursive;
 
 
 }
@@ -152,21 +152,21 @@ ul{
 
 /*SK*/
 /*.shadowed{*/
-	/*-webkit-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
-	/*-moz-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
-	/*box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
+/*-webkit-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
+/*-moz-box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
+/*box-shadow: 3px 18px 53px -17px rgba(0,0,0,0.65);*/
 /*}*/
 
 /*Come back later on width 25% ???*/
 .repository .container{
-    width: 82%;
-    margin-left: 19%;
-    margin-top: 24%;
+	width: 82%;
+	margin-left: 19%;
+	margin-top: 24%;
 }
 .block-list .container{
-    width: 100%;
-    margin-left: 7%;
-    margin-top: 95px;
+	width: 100%;
+	margin-left: 7%;
+	margin-top: 95px;
 }
 
 /*SK Width*/
@@ -188,18 +188,18 @@ ul{
 	/*width:100%;*/
 	margin:3px 0px;
 	border-radius:5px;
-    font-size: 21px;
-    font-weight: bold;
+	font-size: 21px;
+	font-weight: bold;
 }
 .week-schedule .exercise{
-    background-color:#43a0fa;
+	background-color:#43a0fa;
 	color: white;
 	font-size: 15px;
 	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
-    font-size: 19px;
-    font-weight: bold;
+	font-size: 19px;
+	font-weight: bold;
 }
 
 /*SK Width BGColor, Color, FontSize*/
@@ -210,19 +210,19 @@ ul{
 	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
-    font-size: 21px;
-    font-weight: bold;
+	font-size: 21px;
+	font-weight: bold;
 }
 .week-schedule .lecture{
-    background-color:#ff6969;
+	background-color:#ff6969;
 	color: white;
 	font-size: 15px;
 	/*width:100px;*/
 	margin:5px 0px;
 	border-radius:5px;
-    text-align: center;
-    font-size: 19px;
-    font-weight: bold;
+	text-align: center;
+	font-size: 19px;
+	font-weight: bold;
 
 }
 .container .slot.assignment{
@@ -232,19 +232,19 @@ ul{
 	/*width:100%;*/
 	margin:5px 0px;
 	border-radius:5px;
-    font-size: 21px;
-    font-weight: bold;
+	font-size: 21px;
+	font-weight: bold;
 }
 .week-schedule .assignment{
-    background-color: #fde83f;
+	background-color: #fde83f;
 	color: white;
 	font-size: 15px;
 	/*width:100px;*/
 	margin:5px 0px;
 	border-radius:5px;
-    text-align: center;
-    font-size: 19px;
-    font-weight: bold;
+	text-align: center;
+	font-size: 19px;
+	font-weight: bold;
 }
 
 /*SK Colors*/
@@ -279,9 +279,9 @@ ul{
 
 /*Hilly Rock*/
 /*img {*/
-	/*width: 5%;*/
-	/*display:inline-block;*/
-	/*margin:auto;*/
+/*width: 5%;*/
+/*display:inline-block;*/
+/*margin:auto;*/
 /*}*/
 
 /*SK AMPM*/
@@ -295,17 +295,17 @@ ul{
 }
 
 .timeLine{
-   display: inline-block;
-    height: 500px;
-    width: 50px;
-    vertical-align: top;
-    padding-top: 3%;
-    padding-bottom: 2%;
-   color: gray;
+	display: inline-block;
+	height: 500px;
+	width: 50px;
+	vertical-align: top;
+	padding-top: 3%;
+	padding-bottom: 2%;
+	color: gray;
 }
 
 .timeLineHour {
-    margin-top: 75%;
+	margin-top: 75%;
 
 }
 
@@ -324,7 +324,7 @@ ul{
 	margin:5px 0px;
 }
 .popup-wrapper{
-    display: none;
+	display: none;
 	padding: 220px;
 
 }
@@ -338,20 +338,20 @@ ul{
 /*SK BGColor color cursor border*/
 .closingGrass {
 	float: right;
-    padding-right: 8px;
-    font-size: 25px;
-    /*background-color:  #0070a8;*/
-    color: white;
-    border: none;
+	padding-right: 8px;
+	font-size: 25px;
+	/*background-color:  #0070a8;*/
+	color: white;
+	border: none;
 	cursor: pointer;
 	margin: 1%;
 }
 
 #slots-container2{
-    height:50px;
+	height:50px;
 }
 .ui-resizable {
-    position: inherit;
+	position: inherit;
 }
 
 
@@ -360,16 +360,16 @@ ul{
 /***************/
 
 .calBanner{
-   margin: auto;
-    background-color: #0070a8;
-    height: 130px;
-    width: 742px;
-    font-family: arial;
-    font-size: 35px;
-    color: white;
-    text-align: left;
-    text-indent: 20px;
-   margin-left: 8px;
+	margin: auto;
+	background-color: #0070a8;
+	height: 130px;
+	width: 742px;
+	font-family: arial;
+	font-size: 35px;
+	color: white;
+	text-align: left;
+	text-indent: 20px;
+	margin-left: 8px;
 }
 
 .calStartDate{
@@ -398,144 +398,144 @@ ul{
 
 .weekArrow{
 	border: none;
-    background-color: white;
+	background-color: white;
 	color: gray;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .inLineBlock{
 	display: inline-block;
-        vertical-align: top;
+	vertical-align: top;
 }
 
 .activityHeader{
 	background-color: #016cad;
-    height: 190px;
-    font-size: 20px;
-    color: white;
-    padding-left: 30px;
-    padding-top: 10px;
+	height: 190px;
+	font-size: 20px;
+	color: white;
+	padding-left: 30px;
+	padding-top: 10px;
 	margin: 1%;
 }
 
 .activityTitle{
 	color: white;
 	background-color:  #016cad;
-    border: none;
-    font-size: 30px;
-    width: 50%;
-    font-family: Arial, Helvetica, sans-serif;
+	border: none;
+	font-size: 30px;
+	width: 50%;
+	font-family: Arial, Helvetica, sans-serif;
 	margin: 1%;
 }
 
 .activityDesc{
 	background-color:  #016cad;
-    border: none;
-    font-size: 20px;
-    width: 93%;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 10px;
+	border: none;
+	font-size: 20px;
+	width: 93%;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 10px;
 }
 
 .programTitle{
 	color: white;
-    background-color: #016cad;
-    border: none;
-    font-size: 10px;
-    width: 250%;
-    font-family: Arial, Helvetica, sans-serif;
+	background-color: #016cad;
+	border: none;
+	font-size: 10px;
+	width: 250%;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .cohortTitle{
 	color: white;
-    background-color: #016cad;
-    border: none;
-    font-size: 10px;
-    width: 25%;
-    font-family: Arial, Helvetica, sans-serif;
+	background-color: #016cad;
+	border: none;
+	font-size: 10px;
+	width: 25%;
+	font-family: Arial, Helvetica, sans-serif;
 	margin-left: 8px;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: white;
+	color: white;
 }
 
 input, select, textarea{
-    color: white;
+	color: white;
 }
 
 .classType{
-   /*margin-left: 83%;*/
-   /*margin-top: 10px;*/
+	/*margin-left: 83%;*/
+	/*margin-top: 10px;*/
 }
 
 .classMargin{
-   margin-left: 9%;
+	margin-left: 9%;
 }
 
 .hoursMargin{
-   margin-left: -64%;
+	margin-left: -64%;
 }
 
 .timeslot{
-    margin-left: 4%;
-    width: 25%;
-    color: black;
-    text-align: center;
+	margin-left: 4%;
+	width: 25%;
+	color: black;
+	text-align: center;
 }
 
 input, select, textarea .timeslot{
-    color: black;
+	color: black;
 }
 
 textarea {
-    border-style: none;
-    border-color: Transparent;
-    overflow: auto;
-  }
+	border-style: none;
+	border-color: Transparent;
+	overflow: auto;
+}
 
 .noselect {
-   cursor: auto;
-   -webkit-user-select: none;
-   -webkit-touch-callout: none;
-   -khtml-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   -o-user-select: none;
+	cursor: auto;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
 }
 
 .noselect:focus {
-   outline: none;
+	outline: none;
 }
 
 .top{
 	top: 100px;
 }
 .saveForm{
-    background-color: #00d470;
-    color: white;
-    width: 60px;
-    height: 25px;
-    margin-left: 85%;
-    margin-top: 4%;
-    font-size: 15px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
+	background-color: #00d470;
+	color: white;
+	width: 60px;
+	height: 25px;
+	margin-left: 85%;
+	margin-top: 4%;
+	font-size: 15px;
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
 }
 /*SCROLL*/
 
 /* Let's get this party started */
 ::-webkit-scrollbar {
-    width: 6px;
+	width: 6px;
 }
 
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: lightgray;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: lightgray;
 }
 
 /*Stone CSS*/
@@ -544,15 +544,15 @@ textarea {
 	height: 47px;
 	width: 94px;
 	/*border: 1px solid black;*/
-    border-radius: 5px;
-    margin: 5px 0px;
+	border-radius: 5px;
+	margin: 5px 0px;
 }
 .stoneSlot{
 	height: 47px;
 	width: 94px;
 	background-color: green;
-    border-radius: 5px;
-    margin: 5px 0px;
+	border-radius: 5px;
+	margin: 5px 0px;
 
 }
 .stoneCreator {
@@ -561,17 +561,17 @@ textarea {
 	background-color: rosybrown;
 }
 .popWrapperStone{
-    position:fixed;
+	position:fixed;
 	background-color:rgba(0,0,0,0.5);
 	top:0;
 	bottom:0;
 	left:0;
 	right:0;
-    display: none;
+	display: none;
 	padding: 220px;
 }
 .popupStone{
-    width:25%;
+	width:25%;
 	height:30%;
 	position:absolute;
 	top:50%;
@@ -580,19 +580,30 @@ textarea {
 	background-color:white;
 }
 .closingPopupStone{
-    float: right;
-    padding-right: 8px;
-    font-size: 25px;
-    /*background-color:  #0070a8;*/
-    color: white;
-    border: none;
+	float: right;
+	padding-right: 8px;
+	font-size: 25px;
+	/*background-color:  #0070a8;*/
+	color: white;
+	border: none;
 	cursor: pointer;
 	margin: 34%;
 }
 .repo-panel.inLineBlock{
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 23%;
-    height: 74%;
-    max-width: 23%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 23%;
+	height: 74%;
+	max-width: 23%;
+}
+
+#addStone {
+	color: #616161;
+    width: 6%;
+    height: 33%;
+    border-radius: 6px;
+    float: right;
+    margin-top: 2%;
+    margin-right: 2%;
+    font-size: 25px;
 }
