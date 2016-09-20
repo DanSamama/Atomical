@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ReSchedule</title>
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name=viewport content="width=device-width, initial-scale=1">
-	<meta property="og:image" content="" />
-	<meta property="og:title" content="ReSchedule" />
-	<meta property="og:url" content="" />
-	<meta property="og:description" content="" />
+    <title>ReSchedule</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta property="og:image" content="" />
+    <meta property="og:title" content="ReSchedule" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
 
-	<!-- CSS (LIB) -->
-	<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui.min.css?v={{version}}">
-	<link rel="stylesheet" type="text/css" href="/js/lib/font-awesome.min.css?v={{version}}">
+    <!-- CSS (LIB) -->
+    <link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui.min.css?v={{version}}">
+    <link rel="stylesheet" type="text/css" href="/js/lib/font-awesome.min.css?v={{version}}">
 
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="/css/r.css?v={{version}}">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/r.css?v={{version}}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 
-	<!-- JS (LIB) -->
-	<script type="text/javascript" src="/js/lib/jquery-3.1.0.min.js?v={{version}}"></script>
-	<script type="text/javascript"  src="/js/lib/jquery-ui.min.js?v={{version}}"></script>
+    <!-- JS (LIB) -->
+    <script type="text/javascript" src="/js/lib/jquery-3.1.0.min.js?v={{version}}"></script>
+    <script type="text/javascript"  src="/js/lib/jquery-ui.min.js?v={{version}}"></script>
 
-	<!-- JS -->
-	<script  type="text/javascript" src="/js/r.js?v={{version}}"></script>
+    <!-- JS -->
+    <script  type="text/javascript" src="/js/r.js?v={{version}}"></script>
 </head>
 <body>
 {#<div class="main">#}
@@ -34,21 +34,23 @@
 {#		<div class="left-panel">#}
 <div class="repo-panel inLineBlock">
     <section class="repository">
+        <ul class="container">
+            <li id="add-new" class=" clickable slot wide-btn top"><i class="fa fa-plus"></i></li>
+        </ul>
+
         <ul id="slots-container" class="container connectedSortable repoDroppable">
             {% for activity in repository %}
                 {% include "/templates/repository_activity.html" %}
             {% endfor %}
         </ul>
-        <ul  class="container">
-            <li id="add-new" class=" clickable slot wide-btn top"><i class="fa fa-plus"></i></li>
-        </ul>
+
     </section>
 </div>
 
 <div class="right-panel inLineBlock">
     <div class="inner-panel-container">
         <div class="top-panel">
-{#            <button id="generateCalendar" >Generate Calendar</button>#}
+            {#            <button id="generateCalendar" >Generate Calendar</button>#}
             <section class="block-list">
                 <ul id="slots-container2" class="container connectedSortable BlockListDroppable ">
                     {% for activity in chrono_list %}
@@ -76,32 +78,24 @@
             </div>
             <section class="week-schedule inLineBlock">
 
-{#                Hillys Week Number#}
-{#                <button id="prevWeek"><<</button>#}
-{#                <span id="weekNum"></span>#}
-{##}
-{#                <button id="nextWeek">>></button>#}
-                {#                        Hillys Stone#}
-                {#                        <div class="stone connectedSortable"><img src="../fonts/stone-png-1.png"></div>#}
-
                 <div class="weekScale">
                     <button class="weekArrow" id="prevWeek"><</button>
                     <span class="weekNumber" id="weekNum">Week One</span>
                     <button class="weekArrow" id="nextWeek">></button>
                 </div>
                 <div class="week">
-                   <div class="timeLine">
-    <div class="">9a</div>
-    <div class="timeLineHour">10a</div>
-    <div class="timeLineHour">11a</div>
-    <div class="timeLineHour">12p</div>
-    <div class="timeLineHour">13p</div>
-    <div class="timeLineHour">14p</div>
-    <div class="timeLineHour">15p</div>
-    <div class="timeLineHour">16p</div>
-    <div class="timeLineHour">17p</div>
-    <div class="timeLineHour">18p</div>
-</div>
+                    <div class="timeLine">
+                        <div class="">9a</div>
+                        <div class="timeLineHour">10a</div>
+                        <div class="timeLineHour">11a</div>
+                        <div class="timeLineHour">12p</div>
+                        <div class="timeLineHour">13p</div>
+                        <div class="timeLineHour">14p</div>
+                        <div class="timeLineHour">15p</div>
+                        <div class="timeLineHour">16p</div>
+                        <div class="timeLineHour">17p</div>
+                        <div class="timeLineHour">18p</div>
+                    </div>
 
                     <div class="day zero" data-day="0">
                         <div class="title">Sunday</div>
@@ -161,11 +155,11 @@
 <button id="addStone">Add a stone</button>
 
 <section class="calendarStone">
-                <ul id="slots-container" class="container connectedSortable repoDroppable">
-                    {% for stone in stone %}
-                        {% include "/templates/repository_stone.html" %}
-                    {% endfor %}
-                </ul>
+    <ul id="slots-container" class="container connectedSortable repoDroppable">
+        {% for stone in stone %}
+            {% include "/templates/repository_stone.html" %}
+        {% endfor %}
+    </ul>
 </section>
 
 <div class="popup-wrapper">
